@@ -1,0 +1,33 @@
+/* ============================================================
+   Site Footer
+   ============================================================ */
+
+.site-footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--mahogany);
+}
+
+.footer-tagline {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--honey);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-attribution {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate);
+  letter-spacing: 0.04em;
+}
+
+.footer-attribution a {
+  color: var(--slate);
+  transition: color 0.3s;
+}
+
+.footer-attribution a:hover {
+  color: var(--honey);
+}

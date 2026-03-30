@@ -1,0 +1,623 @@
+/* ============================================================
+   The Ars Combinatoria — Tool-specific styles
+   ============================================================
+   Two wheels. One collision. Things that shouldn't touch, touching.
+   Visually: mechanical, symmetrical, with a spark at the center.
+   The feel: a medieval machine that somehow still works.
+   ============================================================ */
+
+/* --- Layout --- */
+.the-combinatoria {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.combinatoria-header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+
+.combinatoria-title {
+  font-family: var(--font-header);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--ivory);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.combinatoria-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--slate);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.combinatoria-main {
+  flex: 1;
+  padding: 0 1rem 2rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* --- Domain Selector --- */
+.domain-selector {
+  margin-bottom: 2rem;
+}
+
+.domain-wheels {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.domain-wheel {
+  flex: 1;
+  max-width: 280px;
+}
+
+.domain-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--auburn);
+  margin-bottom: 0.4rem;
+}
+
+.domain-input-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--mahogany);
+  transition: border-color 0.3s;
+}
+
+.domain-input-row:focus-within {
+  border-color: var(--honey);
+}
+
+.domain-input {
+  flex: 1;
+  font-family: var(--font-header);
+  font-size: 1.15rem;
+  padding: 0.6rem 0.25rem;
+  background: transparent;
+  border: none;
+  color: var(--ivory);
+  outline: none;
+  min-width: 0;
+}
+
+.domain-input::placeholder {
+  color: var(--slate);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.domain-random {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--slate);
+  cursor: pointer;
+  padding: 0.4rem;
+  transition: color 0.2s, transform 0.3s;
+  line-height: 1;
+}
+
+.domain-random:hover:not(:disabled) {
+  color: var(--honey);
+  transform: rotate(180deg);
+}
+
+.domain-random:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* The collision symbol between the two wheels */
+.domain-collision-symbol {
+  font-family: var(--font-header);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--auburn);
+  padding-bottom: 0.4rem;
+  user-select: none;
+}
+
+/* Action buttons */
+.domain-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+.collide-btn {
+  font-family: var(--font-header);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ivory);
+  background: var(--auburn);
+  border: none;
+  border-radius: 2px;
+  padding: 0.6rem 2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.collide-btn:hover:not(:disabled) {
+  background: var(--russet);
+}
+
+.collide-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.random-both-btn {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--slate);
+  background: none;
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.random-both-btn:hover:not(:disabled) {
+  color: var(--honey);
+  border-color: var(--honey);
+}
+
+.random-both-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* --- Loader --- */
+.combinatori-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.combinatori-loader-animation {
+  width: 120px;
+  height: 60px;
+  margin-bottom: 1.5rem;
+}
+
+.collision-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.orbit-circle {
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.orbit-a {
+  stroke: var(--auburn);
+  animation: orbit-pulse-a 1.6s ease-in-out infinite;
+}
+
+.orbit-b {
+  stroke: var(--honey);
+  animation: orbit-pulse-b 1.6s ease-in-out infinite;
+}
+
+@keyframes orbit-pulse-a {
+  0%, 100% { cx: 30; opacity: 0.6; }
+  50% { cx: 42; opacity: 1; }
+}
+
+@keyframes orbit-pulse-b {
+  0%, 100% { cx: 90; opacity: 0.6; }
+  50% { cx: 78; opacity: 1; }
+}
+
+.collision-spark {
+  fill: var(--brass);
+  animation: spark-pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes spark-pulse {
+  0%, 100% { r: 2; opacity: 0.4; }
+  50% { r: 5; opacity: 1; }
+}
+
+.combinatori-loader-message {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--slate);
+  font-size: 0.95rem;
+  text-align: center;
+  max-width: 400px;
+  animation: fade-in 0.5s ease-out;
+}
+
+/* --- Empty State --- */
+.combinatoria-empty {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.combinatoria-empty-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--parchment);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.combinatoria-empty-hint {
+  font-size: 0.82rem;
+  color: var(--slate);
+}
+
+/* --- Results --- */
+.combinatoria-results {
+  animation: fade-in 0.6s ease-out;
+}
+
+.combinatoria-results-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.combinatoria-back-btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--slate);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.combinatoria-back-btn:hover {
+  color: var(--honey);
+}
+
+.combinatoria-domains {
+  font-family: var(--font-header);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ivory);
+}
+
+.combinatoria-domains-x {
+  color: var(--auburn);
+  font-weight: 300;
+  margin: 0 0.3rem;
+}
+
+/* Collision point — the overarching tension */
+.collision-point {
+  text-align: center;
+  padding: 1rem 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--mahogany);
+}
+
+.collision-point-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--auburn);
+  margin-bottom: 0.3rem;
+}
+
+.collision-point p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--parchment);
+  line-height: 1.6;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* --- Collision Card --- */
+.collision-card {
+  background: var(--charcoal);
+  border: 1px solid var(--mahogany);
+  border-radius: 4px;
+  padding: 1.75rem;
+  margin-bottom: 1.25rem;
+  animation: fade-in 0.5s ease-out backwards;
+}
+
+.collision-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.collision-card-title {
+  font-family: var(--font-header);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ivory);
+}
+
+.collision-card-type {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.type-existing {
+  color: var(--moss);
+  border: 1px solid var(--sage);
+}
+
+.type-buildable {
+  color: var(--honey);
+  border: 1px solid var(--honey);
+}
+
+.type-concept {
+  color: var(--slate);
+  border: 1px solid var(--mahogany);
+}
+
+.collision-card-description {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--parchment);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+/* The two source domains side by side */
+.collision-card-sources {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  background: rgba(28, 28, 28, 0.4);
+  border-radius: 2px;
+}
+
+.collision-source-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--auburn);
+  margin-bottom: 0.25rem;
+}
+
+.collision-source p {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--cream);
+  line-height: 1.5;
+}
+
+.collision-card-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--auburn);
+  margin-bottom: 0.25rem;
+}
+
+.collision-card-why {
+  margin-bottom: 1rem;
+}
+
+.collision-card-why p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--parchment);
+  line-height: 1.6;
+}
+
+.collision-card-step {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--mahogany);
+}
+
+.collision-card-step p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--honey);
+  line-height: 1.6;
+}
+
+.collision-card-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate);
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+  margin-top: 0.75rem;
+}
+
+.collision-card-link:hover {
+  color: var(--honey);
+}
+
+/* --- Llull Note --- */
+.llull-note {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--mahogany);
+}
+
+.llull-note-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--auburn);
+  margin-bottom: 0.5rem;
+}
+
+.llull-note p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--parchment);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 0.5rem;
+}
+
+.llull-note-attribution {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--slate);
+  letter-spacing: 0.04em;
+}
+
+/* --- Copy --- */
+.combinatoria-copy {
+  text-align: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.combinatoria-copy-btn {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--honey);
+  background: none;
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.combinatoria-copy-btn:hover {
+  color: var(--brass);
+  border-color: var(--honey);
+  background: rgba(201, 169, 97, 0.08);
+}
+
+.combinatoria-copy-hint {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--slate);
+  margin-top: 0.35rem;
+  font-style: italic;
+}
+
+/* --- Error --- */
+.combinatoria-error {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.combinatoria-error-message {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--auburn);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.combinatoria-nokey-message {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--honey);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.combinatoria-retry-btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--ivory);
+  background: var(--mahogany);
+  border: 1px solid var(--auburn);
+  border-radius: 2px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 0.75rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.combinatoria-retry-btn:hover {
+  background: var(--burgundy);
+}
+
+/* --- Responsive --- */
+@media (max-width: 700px) {
+  .combinatoria-title {
+    font-size: 1.6rem;
+  }
+
+  .domain-wheels {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .domain-wheel {
+    max-width: none;
+  }
+
+  .domain-collision-symbol {
+    text-align: center;
+    padding: 0.25rem 0;
+  }
+
+  .collision-card-sources {
+    grid-template-columns: 1fr;
+  }
+
+  .combinatoria-results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,125 @@
+/* ============================================================
+   Vellumere Foundation — Design System
+   ============================================================
+   The midnight study, rendered in CSS.
+   Every variable tells a story. Every color has a reason.
+   ============================================================ */
+
+/* --- Root Variables: The Vellumere Palette --- */
+:root {
+  /* Foundation — the midnight study */
+  --deepest: #1C1C1C;
+  --charcoal: #282828;
+  --mahogany: #3A2F2F;
+
+  /* Parchment — aged materials */
+  --cream: #F5E6D3;
+  --parchment: #E8D5C4;
+  --ivory: #FFF8F0;
+
+  /* Warmth — red panda, Victorian velvet */
+  --burgundy: #6B2C2C;
+  --russet: #CD5C5C;
+  --auburn: #BC544B;
+
+  /* Scholar's green */
+  --forest: #2F4538;
+  --sage: #4A5F4F;
+  --moss: #5C6F5C;
+
+  /* Candlelight */
+  --honey: #C9A961;
+  --brass: #D4AF37;
+
+  /* Tools */
+  --slate: #708090;
+  --steel: #536878;
+
+  /* Functional mappings */
+  --connection-line: rgba(201, 169, 97, 0.3);
+  --node-border: var(--auburn);
+  --hover-glow: rgba(201, 169, 97, 0.15);
+
+  /* Typography */
+  --font-header: 'Crimson Pro', Georgia, serif;
+  --font-body: 'EB Garamond', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 18px body feels right for long-form reading on EB Garamond */
+body {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--cream);
+  line-height: 1.7;
+  min-height: 100vh;
+  background: var(--deepest);
+  padding-top: 4.5rem;
+}
+
+/* Noise texture overlay — subtle grain like aged paper */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* --- Global Links --- */
+a {
+  color: var(--honey);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--brass);
+}
+
+/* --- Selection --- */
+::selection {
+  background: var(--auburn);
+  color: var(--ivory);
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--deepest);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mahogany);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate);
+}
+
+/* --- Shared Animation --- */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

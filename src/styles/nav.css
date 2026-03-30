@@ -1,0 +1,156 @@
+/* ============================================================
+   Site Navigation — the fixed header
+   ============================================================ */
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(28, 28, 28, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--mahogany);
+  padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-header);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Vellumere wordmark */
+.nav-wordmark {
+  font-family: var(--font-header);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--honey);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.nav-wordmark:hover {
+  color: var(--brass);
+}
+
+/* Back link for tool pages */
+.nav-back {
+  font-family: var(--font-header);
+  font-size: 0.95rem;
+  color: var(--parchment);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+
+.nav-back:hover {
+  color: var(--honey);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--parchment);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--honey);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: var(--honey);
+}
+
+/* Settings gear */
+.settings-gear {
+  background: none;
+  border: none;
+  color: var(--slate);
+  cursor: pointer;
+  padding: 0.3rem;
+  transition: color 0.2s, transform 0.3s;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.settings-gear:hover {
+  color: var(--honey);
+  transform: rotate(60deg);
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--cream);
+  transition: all 0.3s;
+}
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(28, 28, 28, 0.98);
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--mahogany);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+}

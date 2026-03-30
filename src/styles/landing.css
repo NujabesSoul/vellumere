@@ -1,0 +1,195 @@
+/* ============================================================
+   Landing Page — Vellumere home
+   ============================================================ */
+
+.landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-main {
+  flex: 1;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* --- Hero (compact, NOT full-viewport) --- */
+.hero {
+  text-align: center;
+  padding: 4rem 0 3rem;
+}
+
+.hero-title {
+  font-family: var(--font-header);
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: var(--ivory);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--parchment);
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+}
+
+.hero-intro {
+  font-family: var(--font-body);
+  color: var(--parchment);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 650px;
+  margin: 0 auto;
+  opacity: 0.85;
+}
+
+/* --- Tools Section --- */
+.tools-section {
+  padding: 2rem 0 3rem;
+}
+
+.tools-section-title {
+  font-family: var(--font-header);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.tools-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* Tool Card */
+.tool-card {
+  background: var(--charcoal);
+  border: 1px solid var(--mahogany);
+  border-radius: 6px;
+  padding: 1.5rem 1.75rem;
+  text-decoration: none;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+  display: block;
+}
+
+.tool-card.live:hover {
+  border-color: var(--auburn);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(188, 84, 75, 0.1);
+}
+
+.tool-card.coming-soon {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.tool-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.tool-card-name {
+  font-family: var(--font-header);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ivory);
+}
+
+.tool-card-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  padding: 0.15rem 0.5rem;
+  white-space: nowrap;
+}
+
+.tool-card-description {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--parchment);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.tool-card-origin {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--auburn);
+  letter-spacing: 0.04em;
+}
+
+/* --- About Section --- */
+.about-section {
+  padding: 3rem 0 4rem;
+  border-top: 1px solid var(--mahogany);
+}
+
+.about-title {
+  font-family: var(--font-header);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.about-text {
+  font-family: var(--font-body);
+  color: var(--parchment);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 650px;
+  margin: 0 auto 1.5rem;
+}
+
+.about-link {
+  display: block;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--honey);
+  transition: color 0.3s;
+}
+
+.about-link:hover {
+  color: var(--brass);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .landing-main {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .tool-card {
+    padding: 1.25rem;
+  }
+}
