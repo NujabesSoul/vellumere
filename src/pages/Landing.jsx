@@ -1,7 +1,5 @@
-import { useState } from 'react'
 import SiteNav from '../components/SiteNav.jsx'
 import SiteFooter from '../components/SiteFooter.jsx'
-import ApiKeyModal from '../components/ApiKeyModal.jsx'
 import ToolCard from '../components/ToolCard.jsx'
 
 const TOOLS = [
@@ -43,12 +41,9 @@ const TOOLS = [
 ]
 
 export default function Landing() {
-  const [showSettings, setShowSettings] = useState(false)
-
   return (
     <div className="landing">
-      <SiteNav onOpenSettings={() => setShowSettings(true)} />
-      <ApiKeyModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
+      <SiteNav />
 
       <main className="landing-main">
         <section className="hero">

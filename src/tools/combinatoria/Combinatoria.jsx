@@ -1,18 +1,17 @@
 import { useState, useCallback, useRef } from 'react'
 import SiteNav from '../../components/SiteNav.jsx'
 import SiteFooter from '../../components/SiteFooter.jsx'
-import ApiKeyModal from '../../components/ApiKeyModal.jsx'
 import HelpTooltip from '../../components/HelpTooltip.jsx'
 import DomainSelector from './components/DomainSelector.jsx'
 import CollisionCard from './components/CollisionCard.jsx'
 import CombinatoriLoader from './components/CombinatoriLoader.jsx'
-import { query, hasApiKey } from '../../services/api.js'
+import { query } from '../../services/api.js'
 import { COMBINATORIA_PROMPT } from './prompt.js'
 import './combinatoria.css'
 
 // The Ars Combinatoria
 // Ramon Llull built a paper wheel in 1305 to systematically combine concepts.
-// 720 years later, we're doing the same thing with React and an API key.
+// 720 years later, we're doing the same thing with React.
 // Progress.
 
 export default function Combinatoria() {
@@ -20,7 +19,6 @@ export default function Combinatoria() {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   const [currentDomains, setCurrentDomains] = useState({ a: '', b: '' })
-  const [showSettings, setShowSettings] = useState(false)
   const [copied, setCopied] = useState(false)
   const copiedTimeout = useRef(null)
 
@@ -72,11 +70,6 @@ export default function Combinatoria() {
     setError(null)
     setData(null)
 
-    if (!hasApiKey()) {
-      setState('no_key')
-      return
-    }
-
     try {
       const raw = await query({
         systemPrompt: COMBINATORIA_PROMPT,
@@ -104,12 +97,8 @@ export default function Combinatoria() {
       setData(result)
       setState('results')
     } catch (err) {
-      if (err.message === 'NO_API_KEY') {
-        setState('no_key')
-      } else {
-        setError(err.message)
-        setState('error')
-      }
+      setError(err.message)
+      setState('error')
     }
   }, [])
 
@@ -122,8 +111,7 @@ export default function Combinatoria() {
 
   return (
     <div className="the-combinatoria">
-      <SiteNav onOpenSettings={() => setShowSettings(true)} isToolPage />
-      <ApiKeyModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
+      <SiteNav isToolPage />
 
       <header className="combinatoria-header">
         <h1 className="combinatoria-title" onClick={handleReset} style={{ cursor: 'pointer' }}>
@@ -200,18 +188,6 @@ export default function Combinatoria() {
               </button>
               <span className="combinatoria-copy-hint">Copy as markdown</span>
             </div>
-          </div>
-        )}
-
-        {/* No API key */}
-        {state === 'no_key' && (
-          <div className="combinatoria-error">
-            <p className="combinatoria-nokey-message">
-              Even a 13th-century machine needs fuel. Click the gear icon to enter your Anthropic API key.
-            </p>
-            <button className="combinatoria-retry-btn" onClick={() => setShowSettings(true)}>
-              Open Settings
-            </button>
           </div>
         )}
 

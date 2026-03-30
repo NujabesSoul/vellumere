@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { QUESTIONS, MONTHLY_REFLECTION_PROMPT, STORAGE_KEY } from '../prompt.js'
-import { query, hasApiKey } from '../../../services/api.js'
+import { query } from '../../../services/api.js'
 
 // Monthly Reflection — the ONE place this tool uses the AI.
 // Available after 7+ entries. Finds patterns, not summaries.
@@ -13,7 +13,7 @@ function loadEntries() {
   }
 }
 
-export default function MonthlyReflection({ onOpenSettings }) {
+export default function MonthlyReflection() {
   const [state, setState] = useState('idle')
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
@@ -22,11 +22,6 @@ export default function MonthlyReflection({ onOpenSettings }) {
   const hasEnough = entries.length >= 7
 
   const handleReflect = useCallback(async () => {
-    if (!hasApiKey()) {
-      setState('no_key')
-      return
-    }
-
     setState('loading')
     setError(null)
     setData(null)
@@ -65,12 +60,8 @@ export default function MonthlyReflection({ onOpenSettings }) {
       setData(result)
       setState('results')
     } catch (err) {
-      if (err.message === 'NO_API_KEY') {
-        setState('no_key')
-      } else {
-        setError(err.message)
-        setState('error')
-      }
+      setError(err.message)
+      setState('error')
     }
   }, [entries])
 
@@ -138,15 +129,6 @@ export default function MonthlyReflection({ onOpenSettings }) {
 
           <button className="monthly-reflect-btn" onClick={() => setState('idle')} style={{ marginTop: '1.5rem' }}>
             Done
-          </button>
-        </div>
-      )}
-
-      {state === 'no_key' && (
-        <div className="monthly-error">
-          <p className="monthly-nokey">Reflection needs an API key. Click the gear icon above.</p>
-          <button className="monthly-reflect-btn" onClick={onOpenSettings}>
-            Open Settings
           </button>
         </div>
       )}

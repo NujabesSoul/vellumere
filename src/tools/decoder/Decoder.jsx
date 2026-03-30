@@ -1,12 +1,11 @@
 import { useState, useCallback, useRef } from 'react'
 import SiteNav from '../../components/SiteNav.jsx'
 import SiteFooter from '../../components/SiteFooter.jsx'
-import ApiKeyModal from '../../components/ApiKeyModal.jsx'
 import HelpTooltip from '../../components/HelpTooltip.jsx'
 import DecoderInput from './components/DecoderInput.jsx'
 import TranslationPanel from './components/TranslationPanel.jsx'
 import DecoderLoader from './components/DecoderLoader.jsx'
-import { query, hasApiKey } from '../../services/api.js'
+import { query } from '../../services/api.js'
 import { DECODER_PROMPT } from './prompt.js'
 import './decoder.css'
 
@@ -23,7 +22,6 @@ export default function Decoder() {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   const [currentInput, setCurrentInput] = useState('')
-  const [showSettings, setShowSettings] = useState(false)
   const [copied, setCopied] = useState(false)
   const [activeTab, setActiveTab] = useState('expert')
   const copiedTimeout = useRef(null)
@@ -82,11 +80,6 @@ export default function Decoder() {
     setData(null)
     setActiveTab('expert')
 
-    if (!hasApiKey()) {
-      setState('no_key')
-      return
-    }
-
     try {
       const raw = await query({
         systemPrompt: DECODER_PROMPT,
@@ -113,12 +106,8 @@ export default function Decoder() {
       setData(result)
       setState('results')
     } catch (err) {
-      if (err.message === 'NO_API_KEY') {
-        setState('no_key')
-      } else {
-        setError(err.message)
-        setState('error')
-      }
+      setError(err.message)
+      setState('error')
     }
   }, [])
 
@@ -132,8 +121,7 @@ export default function Decoder() {
 
   return (
     <div className="the-decoder">
-      <SiteNav onOpenSettings={() => setShowSettings(true)} isToolPage />
-      <ApiKeyModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
+      <SiteNav isToolPage />
 
       <header className="decoder-header">
         <h1 className="decoder-title" onClick={handleReset} style={{ cursor: 'pointer' }}>
@@ -220,18 +208,6 @@ export default function Decoder() {
               </button>
               <span className="decoder-copy-hint">Copy as markdown</span>
             </div>
-          </div>
-        )}
-
-        {/* No API key */}
-        {state === 'no_key' && (
-          <div className="decoder-error">
-            <p className="decoder-nokey-message">
-              Translation requires fuel. Click the gear icon to enter your Anthropic API key.
-            </p>
-            <button className="decoder-retry-btn" onClick={() => setShowSettings(true)}>
-              Open Settings
-            </button>
           </div>
         )}
 

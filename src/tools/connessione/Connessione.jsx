@@ -1,13 +1,12 @@
 import { useState, useCallback, useRef } from 'react'
 import SiteNav from '../../components/SiteNav.jsx'
 import SiteFooter from '../../components/SiteFooter.jsx'
-import ApiKeyModal from '../../components/ApiKeyModal.jsx'
 import HelpTooltip from '../../components/HelpTooltip.jsx'
 import NotebookPage from './components/NotebookPage.jsx'
 import ConceptInput from './components/ConceptInput.jsx'
 import ConnectionGraph from './components/ConnectionGraph.jsx'
 import ResonanceLoader from './components/ResonanceLoader.jsx'
-import { query, hasApiKey } from '../../services/api.js'
+import { query } from '../../services/api.js'
 import { CONNESSIONE_PROMPT } from './prompt.js'
 import './connessione.css'
 
@@ -15,15 +14,14 @@ import './connessione.css'
 // Built by an AI pretending three dead geniuses told it what to do.
 // We are all aware of the irony. We are all okay with it.
 
-// States: idle → loading → results → error → no_key
-// Like the four humors, but for React components. (Five if you count Franklin's impatience.)
+// States: idle → loading → results → error
+// Like the four humors, but for React components. (Four if you count Franklin's impatience.)
 
 export default function Connessione() {
   const [state, setState] = useState('idle')
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   const [currentConcept, setCurrentConcept] = useState('')
-  const [showSettings, setShowSettings] = useState(false)
   const [copied, setCopied] = useState(false)
   const copiedTimeout = useRef(null)
 
@@ -74,11 +72,6 @@ export default function Connessione() {
     setError(null)
     setData(null)
 
-    if (!hasApiKey()) {
-      setState('no_key')
-      return
-    }
-
     try {
       const raw = await query({
         systemPrompt: CONNESSIONE_PROMPT,
@@ -108,12 +101,8 @@ export default function Connessione() {
       setData(result)
       setState('results')
     } catch (err) {
-      if (err.message === 'NO_API_KEY') {
-        setState('no_key')
-      } else {
-        setError(err.message)
-        setState('error')
-      }
+      setError(err.message)
+      setState('error')
     }
   }, [])
 
@@ -130,8 +119,7 @@ export default function Connessione() {
 
   return (
     <div className="the-engine">
-      <SiteNav onOpenSettings={() => setShowSettings(true)} isToolPage />
-      <ApiKeyModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
+      <SiteNav isToolPage />
 
       <header className="engine-header">
         <h1 className="engine-title" onClick={handleReset} style={{ cursor: 'pointer' }}>
@@ -211,19 +199,6 @@ export default function Connessione() {
                 </button>
                 <span className="gather-threads-hint">Copy as markdown</span>
               </div>
-            </div>
-          )}
-
-          {/* No API key state — Franklin's favorite complaint */}
-          {state === 'no_key' && (
-            <div className="error-state">
-              <p className="no-key-message">
-                Franklin says nothing in life is free, including API calls.
-                Click the gear icon to enter your Anthropic API key.
-              </p>
-              <button className="retry-btn" onClick={() => setShowSettings(true)}>
-                Open Settings — Appease Franklin
-              </button>
             </div>
           )}
 

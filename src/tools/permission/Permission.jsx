@@ -1,13 +1,12 @@
 import { useState, useCallback, useRef } from 'react'
 import SiteNav from '../../components/SiteNav.jsx'
 import SiteFooter from '../../components/SiteFooter.jsx'
-import ApiKeyModal from '../../components/ApiKeyModal.jsx'
 import HelpTooltip from '../../components/HelpTooltip.jsx'
 import PermissionInput from './components/PermissionInput.jsx'
 import FigureCard from './components/FigureCard.jsx'
 import PatternLine from './components/PatternLine.jsx'
 import PermissionLoader from './components/PermissionLoader.jsx'
-import { query, hasApiKey } from '../../services/api.js'
+import { query } from '../../services/api.js'
 import { PERMISSION_PROMPT } from './prompt.js'
 import './permission.css'
 
@@ -20,7 +19,6 @@ export default function Permission() {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   const [currentDesire, setCurrentDesire] = useState('')
-  const [showSettings, setShowSettings] = useState(false)
   const [copied, setCopied] = useState(false)
   const copiedTimeout = useRef(null)
 
@@ -64,11 +62,6 @@ export default function Permission() {
     setError(null)
     setData(null)
 
-    if (!hasApiKey()) {
-      setState('no_key')
-      return
-    }
-
     try {
       const raw = await query({
         systemPrompt: PERMISSION_PROMPT,
@@ -96,12 +89,8 @@ export default function Permission() {
       setData(result)
       setState('results')
     } catch (err) {
-      if (err.message === 'NO_API_KEY') {
-        setState('no_key')
-      } else {
-        setError(err.message)
-        setState('error')
-      }
+      setError(err.message)
+      setState('error')
     }
   }, [])
 
@@ -114,8 +103,7 @@ export default function Permission() {
 
   return (
     <div className="the-permission-machine">
-      <SiteNav onOpenSettings={() => setShowSettings(true)} isToolPage />
-      <ApiKeyModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
+      <SiteNav isToolPage />
 
       <header className="permission-header">
         <h1 className="permission-title" onClick={handleReset} style={{ cursor: 'pointer' }}>
@@ -174,18 +162,6 @@ export default function Permission() {
               </button>
               <span className="permission-copy-hint">Copy as markdown</span>
             </div>
-          </div>
-        )}
-
-        {/* No API key */}
-        {state === 'no_key' && (
-          <div className="permission-error">
-            <p className="permission-nokey-message">
-              Even permission needs a key. Click the gear icon to enter your Anthropic API key.
-            </p>
-            <button className="permission-retry-btn" onClick={() => setShowSettings(true)}>
-              Open Settings
-            </button>
           </div>
         )}
 

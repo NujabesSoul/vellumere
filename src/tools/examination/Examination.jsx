@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react'
 import SiteNav from '../../components/SiteNav.jsx'
 import SiteFooter from '../../components/SiteFooter.jsx'
-import ApiKeyModal from '../../components/ApiKeyModal.jsx'
 import HelpTooltip from '../../components/HelpTooltip.jsx'
 import DailyExamen from './components/DailyExamen.jsx'
 import PastEntries from './components/PastEntries.jsx'
@@ -16,7 +15,6 @@ import './examination.css'
 
 export default function Examination() {
   const [view, setView] = useState('today')
-  const [showSettings, setShowSettings] = useState(false)
   const [refreshKey, setRefreshKey] = useState(0)
 
   const handleEntrySaved = useCallback(() => {
@@ -26,8 +24,7 @@ export default function Examination() {
 
   return (
     <div className="the-examination">
-      <SiteNav onOpenSettings={() => setShowSettings(true)} isToolPage />
-      <ApiKeyModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
+      <SiteNav isToolPage />
 
       <header className="examination-header">
         <h1 className="examination-title">The Examination</h1>
@@ -70,7 +67,7 @@ export default function Examination() {
         {view === 'calendar' && (
           <div key={refreshKey}>
             <ExamCalendar />
-            <MonthlyReflection onOpenSettings={() => setShowSettings(true)} />
+            <MonthlyReflection />
             <DataPortability onImport={() => setRefreshKey(k => k + 1)} />
           </div>
         )}
