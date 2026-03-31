@@ -1,7 +1,9 @@
 import { useState, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import SiteNav from '../../components/SiteNav.jsx'
 import SiteFooter from '../../components/SiteFooter.jsx'
 import HelpTooltip from '../../components/HelpTooltip.jsx'
+import JourneyLink from '../../components/JourneyLink.jsx'
 import DailyExamen from './components/DailyExamen.jsx'
 import PastEntries from './components/PastEntries.jsx'
 import ExamCalendar from './components/ExamCalendar.jsx'
@@ -29,7 +31,7 @@ export default function Examination() {
       <header className="examination-header">
         <h1 className="examination-title">The Examination</h1>
         <p className="examination-subtitle">
-          Five questions. 60 seconds. Be honest.
+          Five questions. Sixty seconds. Be honest with yourself.
           <HelpTooltip text="A daily reflection practice borrowed from the monastic Examen, practiced since the 6th century. Five questions rooted in Renaissance principles: creation, curiosity, physical engagement, cross-domain thinking, and comfort with the unfinished. No streaks, no scores. Just questions and honest answers. The insight comes from the accumulation." />
         </p>
       </header>
@@ -73,6 +75,12 @@ export default function Examination() {
         )}
       </main>
 
+      <div className="contextual-link-container">
+        <Link to="/permission" className="contextual-link">
+          What do you want permission to do next? →
+        </Link>
+      </div>
+      <JourneyLink currentRoute="/examination" />
       <SiteFooter />
     </div>
   )

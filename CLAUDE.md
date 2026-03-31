@@ -536,6 +536,29 @@ Before finalizing any file: "If CK opens this in VSCode six months from now at m
 - Touch targets: minimum 44px
 - Test at 375px, 390px, 768px
 
+### Responsive Breakpoints
+
+The site uses a consistent three-tier breakpoint system:
+
+| Breakpoint | Target | What Changes |
+|-----------|--------|-------------|
+| **768px** | iPad / tablets | Hamburger nav activates. Landing page layout tightens. |
+| **700px** | Tool breakpoint | Tool titles shrink. Multi-column layouts stack to single column. SVG graph hides (Connessione). Results headers go vertical. Decoder switches to tabbed panels. |
+| **480px** | iPhone SE / small phones | Titles shrink further. Padding tightens. Calendar cells enlarge. Small fonts bump up for readability. Example buttons get bigger touch targets. |
+
+The Decoder additionally uses **1024px** to stack its three-panel grid before switching to tabs at 768px.
+
+### Responsive Patterns to Follow
+
+1. **Touch targets:** All interactive elements (buttons, links, tabs) must be at least 44px. Use padding + negative margin to expand the hit area without changing visual layout (see `.back-btn`, `.hamburger`).
+2. **No horizontal scroll:** `html` and `body` have `overflow-x: hidden`. Never set fixed widths wider than the viewport.
+3. **Tooltips:** Use `max-width: min(400px, calc(100vw - 2rem))` so they never overflow the viewport. At 480px, tooltips anchor to viewport edges instead of centering.
+4. **Loader messages:** Cap `max-width` at `calc(100vw - 3rem)` to prevent overflow on small screens.
+5. **Font floor:** Never go below `0.65rem` on mobile. Bump labels from `0.6rem` → `0.68rem` and metadata from `0.68rem` → `0.72rem` in the 480px breakpoint.
+6. **Multi-column → single column:** Use `grid-template-columns: 1fr` at 700px for any side-by-side layout (collision card sources, monthly principles, etc.).
+7. **Complex layouts:** Follow the Decoder pattern — grid on desktop, stacked on tablet (1024px), tabbed interface on mobile (768px).
+8. **Input fields:** Always set `min-width: 0` on flex inputs to prevent overflow. Use `font-size: 16px` or larger to prevent iOS zoom on focus.
+
 ---
 
 ## What This Site Is NOT

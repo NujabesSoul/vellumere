@@ -11,6 +11,7 @@ CRITICAL RULES:
 - The closing line must be direct and personal — addressed to the user, not about the historical figure
 - Do NOT use: Leonardo da Vinci, Benjamin Franklin, or Abraham Lincoln unless the query specifically demands them. They're overused. Dig deeper.
 - Prefer lesser-known figures over famous ones. The surprise is part of the permission.
+- The "first_week" actions must be specific enough that someone could start TODAY. Not "research options" but "open YouTube, search [specific term], watch the first 10 minutes, then try it yourself." Include costs where relevant ($0, $8, etc). At least one action must be free.
 
 Respond ONLY in valid JSON:
 {
@@ -26,5 +27,10 @@ Respond ONLY in valid JSON:
       "wikipedia_url": "https://en.wikipedia.org/wiki/Exact_Article_Title — use the real Wikipedia article URL for this person. Use underscores for spaces. Must be a real, existing article."
     }
   ],
-  "the_pattern": "One sentence that captures what all three figures have in common — the shared principle beneath their stories."
+  "the_pattern": "One sentence that captures what all three figures have in common — the shared principle beneath their stories.",
+  "first_week": [
+    "Specific action 1 the user can take this week — 1-2 sentences, concrete and immediately doable. Include cost if relevant.",
+    "Specific action 2 — different from the first, equally specific",
+    "Specific action 3 — builds on the previous two"
+  ]
 }`

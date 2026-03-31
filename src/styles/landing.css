@@ -49,83 +49,115 @@
   opacity: 0.85;
 }
 
-/* --- Tools Section --- */
-.tools-section {
+/* --- The Journey --- */
+/* Six tools. One path. The vertical line connects them
+   like chapters in a book you're writing about yourself. */
+
+.journey-section {
   padding: 2rem 0 3rem;
 }
 
-.tools-section-title {
+.journey-section-title {
   font-family: var(--font-header);
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--ivory);
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   text-align: center;
   letter-spacing: 0.02em;
 }
 
-.tools-grid {
-  display: grid;
-  gap: 1.25rem;
+.journey-section-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--parchment);
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-/* Tool Card */
-.tool-card {
-  background: var(--charcoal);
-  border: 1px solid var(--mahogany);
-  border-radius: 6px;
-  padding: 1.5rem 1.75rem;
-  text-decoration: none;
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
-  display: block;
+.journey-steps {
+  position: relative;
+  padding-left: 3rem;
 }
 
-.tool-card.live:hover {
-  border-color: var(--auburn);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(188, 84, 75, 0.1);
+/* The vertical connecting line */
+.journey-steps::before {
+  content: '';
+  position: absolute;
+  left: 0.85rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: var(--mahogany);
 }
 
-.tool-card.coming-soon {
-  opacity: 0.5;
-  cursor: default;
-}
-
-.tool-card-header {
+.journey-step {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 0.5rem;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-.tool-card-name {
+.journey-step:last-child {
+  margin-bottom: 0;
+}
+
+.journey-step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--slate);
+  background: var(--deepest);
+  border-radius: 50%;
+  border: 1px solid var(--mahogany);
+  position: absolute;
+  left: -3rem;
+  top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.journey-step-content {
+  flex: 1;
+}
+
+a.journey-step-name {
   font-family: var(--font-header);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--ivory);
+  display: block;
+  margin-bottom: 0.3rem;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-.tool-card-badge {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+a.journey-step-name:hover {
+  color: var(--honey);
+}
+
+.journey-step-name.coming-soon {
+  font-family: var(--font-header);
+  font-size: 1.15rem;
+  font-weight: 600;
   color: var(--slate);
-  border: 1px solid var(--mahogany);
-  border-radius: 2px;
-  padding: 0.15rem 0.5rem;
-  white-space: nowrap;
+  display: block;
+  margin-bottom: 0.3rem;
 }
 
-.tool-card-description {
+.journey-step-description {
   font-family: var(--font-body);
   font-size: 0.95rem;
   color: var(--parchment);
   line-height: 1.6;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.4rem;
 }
 
-.tool-card-origin {
+.journey-step-origin {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--auburn);
@@ -182,6 +214,18 @@
   .landing-main {
     padding: 0 1.25rem;
   }
+
+  .journey-steps {
+    padding-left: 2.5rem;
+  }
+
+  .journey-step-number {
+    left: -2.5rem;
+  }
+
+  .journey-steps::before {
+    left: 0.6rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -189,7 +233,35 @@
     font-size: 2rem;
   }
 
-  .tool-card {
-    padding: 1.25rem;
+  .landing-main {
+    padding: 0 1rem;
+  }
+
+  .hero {
+    padding: 2.5rem 0 2rem;
+  }
+
+  .journey-steps {
+    padding-left: 2rem;
+  }
+
+  .journey-step-number {
+    left: -2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.68rem;
+  }
+
+  .journey-steps::before {
+    left: 0.45rem;
+  }
+
+  .journey-step-origin {
+    font-size: 0.72rem;
+  }
+
+  /* Journey step links need 44px touch target */
+  a.journey-step-name {
+    padding: 0.25rem 0;
   }
 }

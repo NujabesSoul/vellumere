@@ -3,16 +3,17 @@
    ============================================================ */
 
 /* --- Help Tooltip --- */
+/* Visible circle is 1.3rem but padding expands touch target to ~44px */
 .help-tooltip-trigger {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.1rem;
-  height: 1.1rem;
-  font-size: 0.75rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  font-size: 0.8rem;
   font-style: normal;
   font-family: var(--font-body);
-  color: var(--slate);
+  color: var(--parchment);
   border: 1px solid var(--mahogany);
   border-radius: 50%;
   cursor: pointer;
@@ -20,6 +21,8 @@
   vertical-align: middle;
   transition: color 0.2s, border-color 0.2s;
   user-select: none;
+  padding: 0.5rem;
+  box-sizing: content-box;
 }
 
 .help-tooltip-trigger:hover {
@@ -44,11 +47,61 @@
   font-style: normal;
   font-size: 0.9rem;
   line-height: 1.6;
-  max-width: 400px;
+  max-width: min(400px, calc(100vw - 2rem));
   width: max-content;
   padding: 1rem 1.25rem;
   border-radius: 4px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
   z-index: 50;
   animation: fade-in 0.2s ease-out;
+}
+
+/* --- Journey Link --- */
+/* Subtle thread connecting tools. EB Garamond italic, quiet until hovered. */
+.journey-link-container {
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+
+.journey-link {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--slate);
+  transition: color 0.2s;
+}
+
+.journey-link:hover {
+  color: var(--honey);
+}
+
+/* --- Contextual Link --- */
+/* Primary nudge to the next tool — specific to what the user just did.
+   Honey, warm, the natural next step. Journey link is the quiet fallback. */
+.contextual-link-container {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+}
+
+.contextual-link {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--honey);
+  transition: color 0.2s;
+}
+
+.contextual-link:hover {
+  color: var(--brass);
+}
+
+/* --- Mobile --- */
+@media (max-width: 480px) {
+  .help-tooltip {
+    /* Anchor to viewport edges on small phones */
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    width: auto;
+  }
 }

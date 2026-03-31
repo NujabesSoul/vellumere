@@ -45,8 +45,8 @@
 .engine-subtitle {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.9rem;
-  color: var(--slate);
+  font-size: 1.05rem;
+  color: var(--parchment);
   max-width: 600px;
   margin: 0 auto;
   position: relative;
@@ -278,7 +278,8 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.25rem 0;
+  padding: 0.5rem 0.75rem;
+  margin: -0.25rem -0.75rem;
   transition: color 0.2s;
   white-space: nowrap;
 }
@@ -575,10 +576,14 @@
 }
 
 /* --- Gather the Threads (copy as markdown) --- */
+/* Positioned outside the notebook container to match other tools' copy sections */
 .gather-threads {
   text-align: center;
   margin-top: 1.5rem;
-  padding-top: 1rem;
+  padding: 1rem 1rem 0;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gather-threads-btn {
@@ -706,5 +711,31 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+
+  .notebook-page {
+    min-height: auto;
+  }
+
+  .resonance-message {
+    max-width: calc(100vw - 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .engine-title {
+    font-size: 1.4rem;
+  }
+
+  .concept-input {
+    font-size: 1rem;
+  }
+
+  .connection-card {
+    padding: 1rem 1.25rem;
+  }
+
+  .engine-main {
+    padding: 0 0.75rem 2rem;
   }
 }

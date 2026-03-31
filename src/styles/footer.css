@@ -31,3 +31,14 @@
 .footer-attribution a:hover {
   color: var(--honey);
 }
+
+/* --- Mobile --- */
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 2rem 1.25rem;
+  }
+
+  .footer-attribution {
+    font-size: 0.78rem;
+  }
+}

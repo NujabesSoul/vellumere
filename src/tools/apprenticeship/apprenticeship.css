@@ -1,0 +1,677 @@
+/* ============================================================
+   The Apprenticeship — Tool-specific styles
+   ============================================================
+   The progression from novice to craftsman. Phases unfold
+   like waypoints on a hand-drawn map. The vertical timeline
+   connects them — each phase is a stop on the journey.
+   The feel: receiving a letter from a master who remembers
+   being exactly where you are now.
+   ============================================================ */
+
+/* --- Layout --- */
+.the-apprenticeship {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.apprenticeship-header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+
+.apprenticeship-title {
+  font-family: var(--font-header);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--ivory);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.apprenticeship-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--parchment);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.apprenticeship-main {
+  flex: 1;
+  padding: 0 1rem 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Input --- */
+.skill-input-form {
+  margin-bottom: 2rem;
+}
+
+.skill-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--mahogany);
+  padding-bottom: 0.5rem;
+  transition: border-color 0.3s;
+}
+
+.skill-input-wrapper:focus-within {
+  border-color: var(--honey);
+}
+
+.skill-input-prefix {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.skill-input {
+  flex: 1;
+  background: none;
+  border: none;
+  font-family: var(--font-header);
+  font-size: 1.3rem;
+  color: var(--cream);
+  outline: none;
+  min-width: 0;
+}
+
+.skill-input::placeholder {
+  color: var(--slate);
+  opacity: 0.6;
+}
+
+.skill-submit {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--slate);
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.skill-submit:hover:not(:disabled) {
+  color: var(--honey);
+  transform: translateX(3px);
+}
+
+.skill-submit:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.skill-input-hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--slate);
+  margin-top: 0.5rem;
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+
+/* --- Examples --- */
+.skill-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.skill-example {
+  background: none;
+  border: 1px solid var(--mahogany);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.skill-example:hover:not(:disabled) {
+  border-color: var(--honey);
+  color: var(--honey);
+}
+
+.skill-example:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* --- Empty State --- */
+.apprenticeship-empty {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.apprenticeship-empty-question {
+  font-family: var(--font-header);
+  font-size: 1.5rem;
+  color: var(--ivory);
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+}
+
+.apprenticeship-empty-hint {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--slate);
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- Loader --- */
+.apprenticeship-loader {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.apprenticeship-loader-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.apprenticeship-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--honey);
+  animation: apprenticeship-dot-pulse 1.4s infinite ease-in-out;
+}
+
+.apprenticeship-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.apprenticeship-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes apprenticeship-dot-pulse {
+  0%, 80%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.apprenticeship-loader-message {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--parchment);
+  animation: apprenticeship-fade-in 0.4s ease-out;
+}
+
+/* --- Results --- */
+.apprenticeship-results {
+  animation: apprenticeship-fade-in 0.6s ease-out;
+}
+
+.apprenticeship-results-header {
+  margin-bottom: 2rem;
+}
+
+.apprenticeship-back-btn {
+  background: none;
+  border: none;
+  color: var(--slate);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  margin: -0.5rem -0.75rem 0.5rem;
+  display: inline-block;
+  transition: color 0.2s;
+}
+
+.apprenticeship-back-btn:hover {
+  color: var(--honey);
+}
+
+.apprenticeship-guild-title {
+  font-family: var(--font-header);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--ivory);
+  margin-bottom: 0.5rem;
+}
+
+.apprenticeship-skill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--auburn);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.apprenticeship-overview {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--parchment);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--mahogany);
+}
+
+/* --- Phase Timeline --- */
+/* The vertical line connecting phases — like chapters in a journey */
+.phase-timeline {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.phase-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.9rem;
+  top: 1rem;
+  bottom: 1rem;
+  width: 2px;
+  background: var(--mahogany);
+}
+
+/* --- Phase Card --- */
+.phase-card {
+  position: relative;
+  margin-bottom: 3rem;
+  animation: apprenticeship-fade-in 0.5s ease-out backwards;
+}
+
+.phase-card:last-child {
+  margin-bottom: 0;
+}
+
+/* Phase number circle — sits on the timeline */
+.phase-number-circle {
+  position: absolute;
+  left: -2.5rem;
+  top: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  border: 2px solid var(--auburn);
+  background: var(--deepest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--honey);
+  z-index: 1;
+}
+
+.phase-name {
+  font-family: var(--font-header);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin-bottom: 0.2rem;
+}
+
+.phase-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--parchment);
+  margin-bottom: 1rem;
+}
+
+/* --- Phase Actions --- */
+.phase-actions {
+  list-style: none;
+  counter-reset: phase-action;
+  padding: 0;
+  margin-bottom: 1.25rem;
+}
+
+.phase-action {
+  counter-increment: phase-action;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--cream);
+  line-height: 1.7;
+  margin-bottom: 0.6rem;
+  padding-left: 1.75rem;
+  position: relative;
+}
+
+.phase-action::before {
+  content: counter(phase-action);
+  position: absolute;
+  left: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--honey);
+  font-weight: 500;
+}
+
+/* --- Avoid This Warning --- */
+/* --- Safety Warning (Phase 1, physical skills only) --- */
+.phase-safety {
+  background: var(--mahogany);
+  border-left: 3px solid var(--auburn);
+  padding: 0.75rem 1rem 0.75rem 1.25rem;
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+}
+
+.phase-safety-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--russet);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.phase-safety-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--parchment);
+  line-height: 1.6;
+}
+
+.phase-avoid {
+  background: var(--mahogany);
+  border-left: 3px solid var(--auburn);
+  padding: 0.75rem 1rem 0.75rem 1.25rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+.phase-avoid-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--russet);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.phase-avoid-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--parchment);
+  line-height: 1.6;
+}
+
+/* --- Ready When Marker --- */
+.phase-ready {
+  border-left: 3px solid var(--moss);
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.phase-ready-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--moss);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.phase-ready-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--cream);
+  line-height: 1.6;
+}
+
+/* --- Resources --- */
+.phase-resources {
+  margin-top: 1rem;
+}
+
+.phase-resources-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.phase-resources-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.resource-item {
+  border: 1px solid var(--mahogany);
+  border-radius: 3px;
+  padding: 0.5rem 0.75rem;
+  max-width: 280px;
+}
+
+.resource-type {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.resource-name {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--honey);
+  display: block;
+}
+
+.resource-cost {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--moss);
+  margin-top: 0.15rem;
+  display: block;
+}
+
+.resource-why {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--parchment);
+  line-height: 1.5;
+  margin-top: 0.25rem;
+  opacity: 0.85;
+}
+
+/* --- Master Note --- */
+.apprenticeship-master-note {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--mahogany);
+}
+
+.apprenticeship-master-note-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--auburn);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.apprenticeship-master-note-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--parchment);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- Copy Button --- */
+.apprenticeship-copy {
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+
+.apprenticeship-copy-btn {
+  background: none;
+  border: 1px solid var(--mahogany);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.apprenticeship-copy-btn:hover {
+  border-color: var(--honey);
+  color: var(--honey);
+}
+
+.apprenticeship-copy-hint {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--slate);
+  margin-top: 0.4rem;
+  letter-spacing: 0.04em;
+}
+
+/* --- Error State --- */
+.apprenticeship-error {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.apprenticeship-error-message {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--parchment);
+  margin-bottom: 1.5rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.apprenticeship-retry-btn {
+  background: none;
+  border: 1px solid var(--mahogany);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.apprenticeship-retry-btn:hover {
+  border-color: var(--honey);
+  color: var(--honey);
+}
+
+/* --- Animation --- */
+@keyframes apprenticeship-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 700px) {
+  .apprenticeship-title {
+    font-size: 1.8rem;
+  }
+
+  .apprenticeship-guild-title {
+    font-size: 1.4rem;
+  }
+
+  .skill-input-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+  }
+
+  .skill-input-prefix {
+    font-size: 1.1rem;
+  }
+
+  .skill-input {
+    font-size: 1.1rem;
+  }
+
+  .phase-timeline {
+    padding-left: 2rem;
+  }
+
+  .phase-timeline::before {
+    left: 0.65rem;
+  }
+
+  .phase-number-circle {
+    left: -2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.65rem;
+  }
+
+  .phase-name {
+    font-size: 1.1rem;
+  }
+
+  .resource-item {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .apprenticeship-title {
+    font-size: 1.4rem;
+  }
+
+  .apprenticeship-guild-title {
+    font-size: 1.2rem;
+  }
+
+  .skill-example {
+    padding: 0.5rem 0.95rem;
+  }
+
+  .phase-avoid,
+  .phase-ready {
+    padding: 0.75rem;
+  }
+}

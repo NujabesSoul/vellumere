@@ -5,6 +5,7 @@ import Permission from './tools/permission/Permission.jsx'
 import Combinatoria from './tools/combinatoria/Combinatoria.jsx'
 import Decoder from './tools/decoder/Decoder.jsx'
 import Examination from './tools/examination/Examination.jsx'
+import Apprenticeship from './tools/apprenticeship/Apprenticeship.jsx'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/combinatoria" element={<Combinatoria />} />
         <Route path="/decoder" element={<Decoder />} />
         <Route path="/examination" element={<Examination />} />
+        <Route path="/apprenticeship" element={<Apprenticeship />} />
       </Routes>
     </BrowserRouter>
   )

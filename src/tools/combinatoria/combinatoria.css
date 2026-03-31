@@ -30,8 +30,8 @@
 .combinatoria-subtitle {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.9rem;
-  color: var(--slate);
+  font-size: 1.05rem;
+  color: var(--parchment);
   max-width: 520px;
   margin: 0 auto;
 }
@@ -288,7 +288,8 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.25rem 0;
+  padding: 0.5rem 0.75rem;
+  margin: -0.25rem -0.75rem;
   transition: color 0.2s;
   white-space: nowrap;
 }
@@ -619,5 +620,36 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+
+  .combinatori-loader-message {
+    max-width: calc(100vw - 3rem);
+  }
+
+  .domain-actions {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .combinatoria-title {
+    font-size: 1.4rem;
+  }
+
+  .collision-card {
+    padding: 1.25rem;
+  }
+
+  .collision-card-sources {
+    padding: 0.75rem;
+  }
+
+  .collision-source-label,
+  .collision-card-label {
+    font-size: 0.68rem;
+  }
+
+  .collision-card-type {
+    font-size: 0.65rem;
   }
 }

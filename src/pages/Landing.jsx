@@ -1,44 +1,76 @@
+import { Link } from 'react-router-dom'
 import SiteNav from '../components/SiteNav.jsx'
 import SiteFooter from '../components/SiteFooter.jsx'
-import ToolCard from '../components/ToolCard.jsx'
 
-const TOOLS = [
+const JOURNEY_STEPS = [
   {
-    name: 'The Connessione Engine',
-    description: 'Enter any topic. Discover techniques from other fields that can transform your approach. Cross-domain transfer, not cute similarities.',
-    origin: 'Leonardo da Vinci · Connessione',
-    route: '/connessione',
-    status: 'live',
-  },
-  {
+    step: 1,
     name: 'The Permission Machine',
-    description: 'A permission slip from history\'s autodidacts. For when you need someone to tell you it\'s okay to start.',
+    journeyDescription: 'Type what you want to do or become. Meet three people from history who did it without permission, credentials, or training.',
     origin: 'Renaissance autodidacts',
     route: '/permission',
     status: 'live',
   },
   {
+    step: 2,
+    name: 'The Apprenticeship',
+    journeyDescription: 'Type what you want to learn. Get a phase-based roadmap from your first week to confident practitioner.',
+    origin: 'Medieval guild progression · Apprentice → Master',
+    route: '/apprenticeship',
+    status: 'live',
+  },
+  {
+    step: 3,
+    name: 'The Connessione Engine',
+    journeyDescription: 'Type any topic you\'re learning or working on. Get techniques from completely different fields that can improve your approach.',
+    origin: 'Leonardo da Vinci · Connessione',
+    route: '/connessione',
+    status: 'live',
+  },
+  {
+    step: 4,
     name: 'The Ars Combinatoria',
-    description: 'A 13th-century combination wheel, rebuilt. Spin concepts together and see what emerges from the collision.',
+    journeyDescription: 'Pick two random subjects. Discover ideas, projects, and insights that only exist where they collide.',
     origin: 'Ramon Llull · 1305',
     route: '/combinatoria',
     status: 'live',
   },
   {
+    step: 5,
     name: 'The Diplomatic Decoder',
-    description: 'Translate between disciplines. Take an idea from one field and render it legible to another.',
+    journeyDescription: 'Paste any complex idea. See it explained three ways — for an expert, a curious beginner, and an impatient skeptic.',
     origin: 'Medieval translators',
     route: '/decoder',
     status: 'live',
   },
   {
+    step: 6,
     name: 'The Examination',
-    description: 'A structured reflection practice borrowed from monastic tradition. What did you learn? What did you miss? What changes?',
+    journeyDescription: 'Five questions about your day. Sixty seconds. No scores, no streaks. Patterns emerge over time.',
     origin: 'Monastic examination of conscience',
     route: '/examination',
     status: 'live',
   },
 ]
+
+function JourneyStep({ step, name, journeyDescription, origin, route, status }) {
+  const isLive = status === 'live'
+
+  return (
+    <div className="journey-step">
+      <span className="journey-step-number">{step}</span>
+      <div className="journey-step-content">
+        {isLive ? (
+          <Link to={route} className="journey-step-name">{name}</Link>
+        ) : (
+          <span className="journey-step-name coming-soon">{name}</span>
+        )}
+        <p className="journey-step-description">{journeyDescription}</p>
+        <span className="journey-step-origin">{origin}</span>
+      </div>
+    </div>
+  )
+}
 
 export default function Landing() {
   return (
@@ -58,11 +90,14 @@ export default function Landing() {
           </p>
         </section>
 
-        <section className="tools-section" id="tools">
-          <h2 className="tools-section-title">The Tools</h2>
-          <div className="tools-grid">
-            {TOOLS.map(tool => (
-              <ToolCard key={tool.name} {...tool} />
+        <section className="journey-section" id="tools">
+          <h2 className="journey-section-title">The Journey</h2>
+          <p className="journey-section-subtitle">
+            Six instruments. One path. From permission to practice.
+          </p>
+          <div className="journey-steps">
+            {JOURNEY_STEPS.map(step => (
+              <JourneyStep key={step.name} {...step} />
             ))}
           </div>
         </section>

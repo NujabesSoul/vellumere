@@ -12,8 +12,8 @@ const PLACEHOLDERS = [
   "What's on your mind? (e.g., 'mycelium networks')",
 ]
 
-export default function ConceptInput({ onSubmit, isLoading }) {
-  const [value, setValue] = useState('')
+export default function ConceptInput({ onSubmit, isLoading, initialValue = '' }) {
+  const [value, setValue] = useState(initialValue)
   const [placeholder] = useState(
     PLACEHOLDERS[Math.floor(Math.random() * PLACEHOLDERS.length)]
   )

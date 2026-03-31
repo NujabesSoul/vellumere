@@ -30,8 +30,8 @@
 .examination-subtitle {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.9rem;
-  color: var(--slate);
+  font-size: 1.05rem;
+  color: var(--parchment);
   max-width: 420px;
   margin: 0 auto;
 }
@@ -628,5 +628,45 @@
 
   .monthly-principles {
     grid-template-columns: 1fr;
+  }
+
+  .exam-tab {
+    padding: 0.75rem 1rem;
+  }
+
+  .examen-edit-btn {
+    padding: 0.45rem 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .examination-title {
+    font-size: 1.4rem;
+  }
+
+  /* Bump tiny calendar/label fonts for readability on phones */
+  .cal-weekday {
+    font-size: 0.65rem;
+  }
+
+  .cal-day-number {
+    font-size: 0.72rem;
+  }
+
+  .cal-cell {
+    min-height: 40px;
+    padding: 0.5rem 0;
+  }
+
+  .question-principle,
+  .past-entry-principle,
+  .monthly-principle-label,
+  .monthly-pattern-principle {
+    font-size: 0.68rem;
+  }
+
+  .data-portability-btn {
+    padding: 0.5rem 0.95rem;
+    font-size: 0.72rem;
   }
 }

@@ -31,8 +31,8 @@
 .permission-subtitle {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.9rem;
-  color: var(--slate);
+  font-size: 1.05rem;
+  color: var(--parchment);
   max-width: 500px;
   margin: 0 auto;
 }
@@ -241,7 +241,8 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.25rem 0;
+  padding: 0.5rem 0.75rem;
+  margin: -0.25rem -0.75rem;
   transition: color 0.2s;
   white-space: nowrap;
 }
@@ -385,6 +386,70 @@
   letter-spacing: 0.04em;
 }
 
+/* --- First Week Actions --- */
+/* The bridge from inspiration to action. After reading about people who
+   didn't wait, here's what YOU do starting Monday. */
+.permission-first-week {
+  margin-top: 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--mahogany);
+}
+
+.permission-first-week-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--honey);
+  margin-bottom: 1rem;
+}
+
+.permission-first-week-list {
+  list-style: none;
+  counter-reset: first-week;
+  padding: 0;
+}
+
+.permission-first-week-action {
+  counter-increment: first-week;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--cream);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.permission-first-week-action::before {
+  content: counter(first-week);
+  position: absolute;
+  left: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--honey);
+  font-weight: 500;
+}
+
+/* --- Cross-tool Link to Apprenticeship --- */
+/* Subtle invitation, not a hard sell. The user just got inspired —
+   this offers the next natural step. */
+.permission-roadmap-link {
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--honey);
+  transition: color 0.2s;
+}
+
+.permission-roadmap-link:hover {
+  color: var(--brass);
+}
+
 /* --- Copy Button --- */
 .permission-copy {
   text-align: center;
@@ -503,5 +568,28 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+
+  .permission-loader-message {
+    max-width: calc(100vw - 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .permission-title {
+    font-size: 1.4rem;
+  }
+
+  .permission-example {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  .figure-label {
+    font-size: 0.72rem;
+  }
+
+  .figure-card {
+    padding-left: 1rem;
   }
 }

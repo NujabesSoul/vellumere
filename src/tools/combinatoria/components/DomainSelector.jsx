@@ -18,8 +18,8 @@ function pickRandom(exclude) {
   return available[Math.floor(Math.random() * available.length)]
 }
 
-export default function DomainSelector({ onCollide, isLoading }) {
-  const [domainA, setDomainA] = useState('')
+export default function DomainSelector({ onCollide, isLoading, initialDomainA = '' }) {
+  const [domainA, setDomainA] = useState(initialDomainA)
   const [domainB, setDomainB] = useState('')
 
   const handleCollide = () => {

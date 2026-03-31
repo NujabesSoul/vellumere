@@ -1,7 +1,9 @@
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import SiteNav from '../../components/SiteNav.jsx'
 import SiteFooter from '../../components/SiteFooter.jsx'
 import HelpTooltip from '../../components/HelpTooltip.jsx'
+import JourneyLink from '../../components/JourneyLink.jsx'
 import NotebookPage from './components/NotebookPage.jsx'
 import ConceptInput from './components/ConceptInput.jsx'
 import ConnectionGraph from './components/ConnectionGraph.jsx'
@@ -24,6 +26,11 @@ export default function Connessione() {
   const [currentConcept, setCurrentConcept] = useState('')
   const [copied, setCopied] = useState(false)
   const copiedTimeout = useRef(null)
+
+  // URL parameter support — Apprenticeship links here with ?topic=
+  const [searchParams] = useSearchParams()
+  const topicFromUrl = searchParams.get('topic')
+  const hasAutoSubmitted = useRef(false)
 
   const handleGatherThreads = useCallback(() => {
     if (!data) return
@@ -110,6 +117,14 @@ export default function Connessione() {
     handleSubmit(domain)
   }, [handleSubmit])
 
+  // Auto-submit when arriving from Apprenticeship with ?topic= param
+  useEffect(() => {
+    if (topicFromUrl && !hasAutoSubmitted.current) {
+      hasAutoSubmitted.current = true
+      handleSubmit(topicFromUrl)
+    }
+  }, [topicFromUrl, handleSubmit])
+
   const handleReset = () => {
     setState('idle')
     setData(null)
@@ -126,7 +141,7 @@ export default function Connessione() {
           The Connessione Engine
         </h1>
         <p className="engine-subtitle">
-          Enter any topic. Discover techniques from other fields that can transform your approach.
+          Type a topic. Discover how techniques from unexpected fields can change your approach.
           <HelpTooltip text="The Connessione Engine finds techniques and methods from unexpected fields that can directly improve how you think about any topic. Type a concept — broad or specific — and discover new approaches imported from domains you'd never think to look at. Inspired by Leonardo da Vinci's principle that everything connects, and David Epstein's research on how generalists solve problems by transferring knowledge across boundaries." />
         </p>
       </header>
@@ -137,6 +152,7 @@ export default function Connessione() {
           <ConceptInput
             onSubmit={handleSubmit}
             isLoading={state === 'loading'}
+            initialValue={topicFromUrl || ''}
           />
 
           {/* Idle / Empty state */}
@@ -193,12 +209,6 @@ export default function Connessione() {
                 </div>
               )}
 
-              <div className="gather-threads">
-                <button className="gather-threads-btn" onClick={handleGatherThreads}>
-                  {copied ? '✓ Copied to clipboard' : '⟢ Gather the Threads'}
-                </button>
-                <span className="gather-threads-hint">Copy as markdown</span>
-              </div>
             </div>
           )}
 
@@ -216,6 +226,26 @@ export default function Connessione() {
           )}
         </NotebookPage>
       </main>
+
+      {state === 'results' && data && (
+        <>
+          <div className="gather-threads">
+            <button className="gather-threads-btn" onClick={handleGatherThreads}>
+              {copied ? '✓ Copied to clipboard' : '⟢ Gather the Threads'}
+            </button>
+            <span className="gather-threads-hint">Copy as markdown</span>
+          </div>
+          <div className="contextual-link-container">
+            <Link
+              to={`/combinatoria?domain_a=${encodeURIComponent(data.input_concept)}`}
+              className="contextual-link"
+            >
+              Collide {data.input_concept} with another field →
+            </Link>
+          </div>
+          <JourneyLink currentRoute="/connessione" />
+        </>
+      )}
 
       {/* Bottega byline */}
       <div className="bottega-byline">

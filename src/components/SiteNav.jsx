@@ -25,7 +25,7 @@ export default function SiteNav({ isToolPage }) {
             </button>
 
             <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
-              <li><a href="#tools">tools</a></li>
+              <li><a href="#tools">journey</a></li>
               <li><a href="#about">about</a></li>
             </ul>
           </>

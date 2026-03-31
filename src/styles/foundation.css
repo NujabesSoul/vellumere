@@ -57,6 +57,8 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Prevent horizontal scroll from any overflowing element */
+  overflow-x: hidden;
 }
 
 /* 18px body feels right for long-form reading on EB Garamond */
@@ -68,6 +70,7 @@ body {
   min-height: 100vh;
   background: var(--deepest);
   padding-top: 4.5rem;
+  overflow-x: hidden;
 }
 
 /* Noise texture overlay — subtle grain like aged paper */

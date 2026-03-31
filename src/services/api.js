@@ -21,6 +21,12 @@ export async function query({ systemPrompt, userMessage, maxTokens = 4096 }) {
   }
 
   const data = await response.json()
+
+  // Worker may return 200 even for Anthropic API errors
+  if (data.type === 'error') {
+    throw new Error(data.error?.message || 'API error')
+  }
+
   const text = data.content?.[0]?.text
   if (!text) throw new Error('Empty response from API')
   return text

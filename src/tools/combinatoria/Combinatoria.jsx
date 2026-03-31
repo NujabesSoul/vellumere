@@ -1,7 +1,9 @@
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import SiteNav from '../../components/SiteNav.jsx'
 import SiteFooter from '../../components/SiteFooter.jsx'
 import HelpTooltip from '../../components/HelpTooltip.jsx'
+import JourneyLink from '../../components/JourneyLink.jsx'
 import DomainSelector from './components/DomainSelector.jsx'
 import CollisionCard from './components/CollisionCard.jsx'
 import CombinatoriLoader from './components/CombinatoriLoader.jsx'
@@ -21,6 +23,10 @@ export default function Combinatoria() {
   const [currentDomains, setCurrentDomains] = useState({ a: '', b: '' })
   const [copied, setCopied] = useState(false)
   const copiedTimeout = useRef(null)
+
+  // URL parameter support — Connessione links here with ?domain_a=
+  const [searchParams] = useSearchParams()
+  const domainAFromUrl = searchParams.get('domain_a')
 
   const handleCopy = useCallback(() => {
     if (!data) return
@@ -118,7 +124,7 @@ export default function Combinatoria() {
           The Ars Combinatoria
         </h1>
         <p className="combinatoria-subtitle">
-          Two domains. One collision. What lives at the intersection?
+          Pick two fields. See what ideas exist at the intersection.
           <HelpTooltip text="Inspired by Ramon Llull's 1305 mechanical combination wheels — devices designed to systematically combine concepts and generate new knowledge. Pick two domains, and discover projects, techniques, and insights that exist only where they collide." />
         </p>
       </header>
@@ -129,6 +135,7 @@ export default function Combinatoria() {
           <DomainSelector
             onCollide={handleCollide}
             isLoading={state === 'loading'}
+            initialDomainA={domainAFromUrl || ''}
           />
         )}
 
@@ -205,6 +212,19 @@ export default function Combinatoria() {
         )}
       </main>
 
+      {state === 'results' && data && (
+        <>
+          <div className="contextual-link-container">
+            <Link
+              to={`/decoder`}
+              className="contextual-link"
+            >
+              Need to explain this to someone? →
+            </Link>
+          </div>
+          <JourneyLink currentRoute="/combinatoria" />
+        </>
+      )}
       <SiteFooter />
     </div>
   )

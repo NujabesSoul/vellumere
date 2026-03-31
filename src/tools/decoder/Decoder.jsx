@@ -1,7 +1,9 @@
 import { useState, useCallback, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import SiteNav from '../../components/SiteNav.jsx'
 import SiteFooter from '../../components/SiteFooter.jsx'
 import HelpTooltip from '../../components/HelpTooltip.jsx'
+import JourneyLink from '../../components/JourneyLink.jsx'
 import DecoderInput from './components/DecoderInput.jsx'
 import TranslationPanel from './components/TranslationPanel.jsx'
 import DecoderLoader from './components/DecoderLoader.jsx'
@@ -128,7 +130,7 @@ export default function Decoder() {
           The Diplomatic Decoder
         </h1>
         <p className="decoder-subtitle">
-          Same idea. Three minds. See what changes.
+          Paste something complex. Get three translations — expert, curious, and skeptic.
           <HelpTooltip text="Inspired by medieval translators who moved knowledge between Arabic and European scholarship. Paste any concept and see it translated for three audiences: the Expert (precise, technical), the Curious (clear, warm, analogies), and the Skeptic (blunt, practical, no fluff). The side-by-side view shows how the same idea shapeshifts across audiences." />
         </p>
       </header>
@@ -225,6 +227,16 @@ export default function Decoder() {
         )}
       </main>
 
+      {state === 'results' && data && (
+        <>
+          <div className="contextual-link-container">
+            <Link to="/examination" className="contextual-link">
+              Reflect on what you learned today →
+            </Link>
+          </div>
+          <JourneyLink currentRoute="/decoder" />
+        </>
+      )}
       <SiteFooter />
     </div>
   )
