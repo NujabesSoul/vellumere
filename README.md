@@ -72,9 +72,7 @@ connection visible.
 
 ## Built By
 
-**CK** — Renaissance Craftsman, first-generation
-Filipino-American, building intellectual sovereignty in the
-AI age.
+**CK** — Renaissance Craftsman building intellectual sovereignty in the AI age.
 
 [heyheyitsck.com](https://heyheyitsck.com)
 
@@ -83,13 +81,7 @@ AI age.
 ## How It Was Built
 
 React + Vite. Hosted on GitHub Pages. AI powered by the
-Anthropic API through a Cloudflare Worker. Zero lines of code
-written by hand — every component was built through Claude Code
-from detailed architectural prompts. The entire platform went
-from thought experiment to production in one weekend.
-
-That's not a flex. That's the point. The tools teach that you
-don't need permission to build things. This project is proof.
+Anthropic API through a Cloudflare Worker. 
 
 ---
 
