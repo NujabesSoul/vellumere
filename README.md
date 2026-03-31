@@ -1,16 +1,98 @@
 # Vellumere
 
-Renaissance thinking tools for the curious.
+**Renaissance thinking tools for the curious.**
 
-**[vellumere.io](https://vellumere.io)**
+[vellumere.io](https://vellumere.io)
 
-Five instruments for thinking differently — each one borrows a technique
-from history and wires it to a modern AI.
+---
 
-- **The Connessione Engine** — Cross-domain technique transfer
-- **The Permission Machine** — Historical precedents for doing things without credentials
-- **The Ars Combinatoria** — Domain collision generator
-- **The Diplomatic Decoder** — Same idea, three audiences
-- **The Examination** — Daily reflection in 60 seconds
+This started as a question in a chaos workshop on a Sunday night:
+"What would Leonardo da Vinci, Nikola Tesla, and Benjamin Franklin
+build together if they had access to a terminal and too much coffee?"
 
-Built by [CK](https://heyheyitsck.com). React + Vite. Hosted on GitHub Pages.
+The answer became a cross-domain pattern engine. That engine became
+a platform. The platform became a journey.
+
+---
+
+## The Journey
+
+Six instruments. Each one borrows a technique from history and
+wires it to a modern AI. They work alone, but they work better
+together — each one leads to the next.
+
+**1. The Permission Machine**
+Type what you want to do or become. Meet three people from history
+who did it without permission, credentials, or training.
+*Inspired by Renaissance autodidacts.*
+
+**2. The Apprenticeship**
+Type what you want to learn. Get a phase-based roadmap from your
+first week to confident practitioner. Budget-friendly, safety-aware,
+built for people learning alone with an internet connection.
+*Inspired by medieval guild progression — Apprentice → Master.*
+
+**3. The Connessione Engine**
+Type any topic. Discover techniques from completely different fields
+that can transform your approach. Not cute similarities — importable
+methods.
+*Inspired by Leonardo da Vinci's principle of Connessione.*
+
+**4. The Ars Combinatoria**
+Pick two random subjects. See what ideas, projects, and insights
+only exist where they collide.
+*Inspired by Ramon Llull's combination wheels, 1305.*
+
+**5. The Diplomatic Decoder**
+Paste any complex idea. See it translated three ways — for an
+expert, a curious beginner, and an impatient skeptic.
+*Inspired by medieval Arabic-to-Latin translators.*
+
+**6. The Examination**
+Five questions about your day. Sixty seconds. No scores, no
+streaks. Patterns emerge over time.
+*Inspired by the monastic examination of conscience.*
+
+---
+
+## The Throughline
+
+Every tool imports from the past. Not nostalgia — technique
+transfer. A 13th-century monk's combination wheel becomes a
+concept collision engine. A guild's apprenticeship structure
+becomes a learning roadmap. A monastery's daily reflection
+becomes five questions that reveal what you're actually doing
+versus what you think you're doing.
+
+The thesis: the best ideas come from connecting things that
+aren't supposed to be connected. These tools make the
+connection visible.
+
+---
+
+## Built By
+
+**CK** — Renaissance Craftsman, first-generation
+Filipino-American, building intellectual sovereignty in the
+AI age.
+
+[heyheyitsck.com](https://heyheyitsck.com)
+
+---
+
+## How It Was Built
+
+React + Vite. Hosted on GitHub Pages. AI powered by the
+Anthropic API through a Cloudflare Worker. Zero lines of code
+written by hand — every component was built through Claude Code
+from detailed architectural prompts. The entire platform went
+from thought experiment to production in one weekend.
+
+That's not a flex. That's the point. The tools teach that you
+don't need permission to build things. This project is proof.
+
+---
+
+*"Ho fatto." — I made it.*
+*What Leonardo supposedly said after finishing something.*
+*Whether it worked was a separate question. This one works.*
