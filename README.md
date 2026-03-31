@@ -32,18 +32,18 @@ first week to confident practitioner. Budget-friendly, safety-aware,
 built for people learning alone with an internet connection.
 *Inspired by medieval guild progression — Apprentice → Master.*
 
-**3. The Connessione Engine**
+**3. The Thread Lab**
 Type any topic. Discover techniques from completely different fields
 that can transform your approach. Not cute similarities — importable
 methods.
 *Inspired by Leonardo da Vinci's principle of Connessione.*
 
-**4. The Ars Combinatoria**
+**4. The Collision Lab**
 Pick two random subjects. See what ideas, projects, and insights
 only exist where they collide.
 *Inspired by Ramon Llull's combination wheels, 1305.*
 
-**5. The Diplomatic Decoder**
+**5. The Decoder**
 Paste any complex idea. See it translated three ways — for an
 expert, a curious beginner, and an impatient skeptic.
 *Inspired by medieval Arabic-to-Latin translators.*

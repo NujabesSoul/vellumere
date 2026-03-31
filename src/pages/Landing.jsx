@@ -21,7 +21,7 @@ const JOURNEY_STEPS = [
   },
   {
     step: 3,
-    name: 'The Connessione Engine',
+    name: 'The Thread Lab',
     journeyDescription: 'Type any topic you\'re learning or working on. Get techniques from completely different fields that can improve your approach.',
     origin: 'Leonardo da Vinci · Connessione',
     route: '/connessione',
@@ -29,7 +29,7 @@ const JOURNEY_STEPS = [
   },
   {
     step: 4,
-    name: 'The Ars Combinatoria',
+    name: 'The Collision Lab',
     journeyDescription: 'Pick two random subjects. Discover ideas, projects, and insights that only exist where they collide.',
     origin: 'Ramon Llull · 1305',
     route: '/combinatoria',
@@ -37,7 +37,7 @@ const JOURNEY_STEPS = [
   },
   {
     step: 5,
-    name: 'The Diplomatic Decoder',
+    name: 'The Decoder',
     journeyDescription: 'Paste any complex idea. See it explained three ways — for an expert, a curious beginner, and an impatient skeptic.',
     origin: 'Medieval translators',
     route: '/decoder',
@@ -105,16 +105,14 @@ export default function Landing() {
         <section className="about-section" id="about">
           <h2 className="about-title">About</h2>
           <p className="about-text">
-            Vellumere is named after vellum — the material scholars used to preserve
-            knowledge for centuries. These tools are experiments in cross-domain thinking:
-            the belief that the best ideas come from connecting things that aren't
-            supposed to be connected.
+            These tools exist because the best ideas come from connecting things that
+            aren't supposed to be connected. Each one borrows a technique from history
+            — medieval guilds, Renaissance workshops, monastic reflection — and makes
+            it useful today.
           </p>
           <p className="about-text">
-            They're built by CK, a Renaissance Craftsman who reads too much and builds
-            too many things. Some of these tools use AI. None of them are trying to
-            replace your thinking. They're trying to help you see what you weren't
-            looking at.
+            They're free. They're experiments. And they're getting better with every
+            person who tries them and tells me what's broken.
           </p>
           <a href="https://heyheyitsck.com" className="about-link" target="_blank" rel="noopener noreferrer">
             More about CK →

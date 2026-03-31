@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
 const JOURNEY_ORDER = [
   { name: 'The Permission Machine', route: '/permission' },
   { name: 'The Apprenticeship', route: '/apprenticeship' },
-  { name: 'The Connessione Engine', route: '/connessione' },
-  { name: 'The Ars Combinatoria', route: '/combinatoria' },
-  { name: 'The Diplomatic Decoder', route: '/decoder' },
+  { name: 'The Thread Lab', route: '/connessione' },
+  { name: 'The Collision Lab', route: '/combinatoria' },
+  { name: 'The Decoder', route: '/decoder' },
   { name: 'The Examination', route: '/examination' },
 ]
 
