@@ -7,6 +7,7 @@ import Decoder from './tools/decoder/Decoder.jsx'
 import Examination from './tools/examination/Examination.jsx'
 import Apprenticeship from './tools/apprenticeship/Apprenticeship.jsx'
 import Commonplace from './tools/commonplace/Commonplace.jsx'
+import Tide from './tools/tide/Tide.jsx'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/examination" element={<Examination />} />
         <Route path="/apprenticeship" element={<Apprenticeship />} />
         <Route path="/commonplace" element={<Commonplace />} />
+        <Route path="/tide" element={<Tide />} />
       </Routes>
     </BrowserRouter>
   )

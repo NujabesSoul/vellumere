@@ -1,0 +1,541 @@
+/* ============================================================
+   The Cognitive Tide Chart — Tool-specific styles
+   ============================================================
+   Tidal charts, lunar calendars, the Old Farmer's Almanac.
+   Cycles and rhythms, not goals and metrics.
+   ============================================================ */
+
+/* --- Layout --- */
+.the-tide {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.tide-header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+
+.tide-title {
+  font-family: var(--font-header);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--ivory);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.tide-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--parchment);
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.tide-main {
+  flex: 1;
+  padding: 0 1rem 2rem;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* --- State Selector --- */
+.state-selector {
+  margin-bottom: 1.5rem;
+}
+
+.state-selector-prompt {
+  font-family: var(--font-header);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--ivory);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.state-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.state-option {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--parchment);
+  background: none;
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.state-option:hover:not(:disabled) {
+  color: var(--cream);
+  border-color: var(--parchment);
+}
+
+.state-option.selected {
+  color: var(--honey);
+  border-color: var(--honey);
+  background: rgba(201, 169, 97, 0.1);
+}
+
+.state-option:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.state-custom {
+  margin-bottom: 1rem;
+}
+
+.state-custom-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+  margin-bottom: 0.35rem;
+  text-align: center;
+}
+
+.state-custom-input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--deepest);
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  color: var(--cream);
+  outline: none;
+  transition: border-color 0.3s;
+  min-width: 0;
+}
+
+.state-custom-input:focus {
+  border-color: var(--honey);
+}
+
+.state-custom-input::placeholder {
+  color: var(--slate);
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+.state-submit-btn {
+  display: block;
+  margin: 0 auto;
+  font-family: var(--font-header);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ivory);
+  background: var(--auburn);
+  border: none;
+  border-radius: 2px;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.state-submit-btn:hover:not(:disabled) {
+  background: var(--russet);
+}
+
+.state-submit-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* --- Loader --- */
+.tide-loader {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.tide-loader-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.tide-loader-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--slate);
+}
+
+/* --- Tide Reading (Results) --- */
+.tide-reading {
+  animation: fade-in 0.4s ease-out;
+}
+
+.tide-reading-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.tide-back-btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--slate);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+}
+
+.tide-back-btn:hover {
+  color: var(--honey);
+}
+
+.tide-state-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--auburn);
+}
+
+/* --- The Reading Paragraph --- */
+.tide-paragraph {
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+  border-top: 1px solid var(--mahogany);
+  border-bottom: 1px solid var(--mahogany);
+}
+
+.tide-paragraph p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--honey);
+  line-height: 1.8;
+}
+
+/* --- Sections --- */
+.tide-section {
+  margin-bottom: 1.5rem;
+}
+
+.tide-section-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--auburn);
+  margin-bottom: 0.6rem;
+}
+
+/* --- Instruments --- */
+.tide-instruments {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tide-instrument-link {
+  display: block;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.tide-instrument-link:hover {
+  border-color: var(--honey);
+  background: rgba(201, 169, 97, 0.04);
+}
+
+.tide-instrument-name {
+  display: block;
+  font-family: var(--font-header);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--ivory);
+  margin-bottom: 0.15rem;
+}
+
+.tide-instrument-why {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--parchment);
+  line-height: 1.5;
+}
+
+/* --- Items (analog work, avoid) --- */
+.tide-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tide-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--mahogany);
+}
+
+.tide-item:last-child {
+  border-bottom: none;
+}
+
+.tide-item-activity {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--cream);
+  margin-bottom: 0.15rem;
+}
+
+.tide-item-why {
+  display: block;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--slate);
+  line-height: 1.5;
+}
+
+.tide-items.avoid .tide-item-activity {
+  color: var(--russet);
+}
+
+/* --- Error --- */
+.tide-error {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.tide-error-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--russet);
+  margin-bottom: 1rem;
+}
+
+.tide-retry-btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--slate);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.tide-retry-btn:hover {
+  color: var(--honey);
+}
+
+/* --- History --- */
+.tide-history {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--mahogany);
+}
+
+.tide-history-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--auburn);
+  margin-bottom: 0.75rem;
+}
+
+/* --- Timeline --- */
+.tide-timeline {
+  display: flex;
+  overflow-x: auto;
+  gap: 0;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tide-mark {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  border-right: 1px solid var(--mahogany);
+  min-width: 80px;
+}
+
+.tide-mark:last-child {
+  border-right: none;
+}
+
+.tide-mark-state {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--cream);
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+.tide-mark-date {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--slate);
+  letter-spacing: 0.02em;
+}
+
+.tide-history-old {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--slate);
+}
+
+/* --- Pattern Reading --- */
+.tide-pattern-section {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+.tide-pattern-locked {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--slate);
+}
+
+.tide-pattern-btn {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--honey);
+  background: none;
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.tide-pattern-btn:hover {
+  color: var(--brass);
+  border-color: var(--honey);
+  background: rgba(201, 169, 97, 0.08);
+}
+
+.tide-pattern-loading {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--slate);
+}
+
+.tide-pattern-result {
+  animation: fade-in 0.3s ease-out;
+  text-align: left;
+  padding: 0.75rem;
+  background: rgba(201, 169, 97, 0.04);
+  border-left: 2px solid var(--honey);
+}
+
+.tide-pattern-type {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--honey);
+  margin-bottom: 0.35rem;
+}
+
+.tide-pattern-observation {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--parchment);
+  line-height: 1.7;
+}
+
+.tide-pattern-done {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--slate);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  transition: color 0.2s;
+}
+
+.tide-pattern-done:hover {
+  color: var(--honey);
+}
+
+.tide-pattern-error {
+  padding: 0.5rem 0;
+}
+
+.tide-pattern-error-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--russet);
+  margin-bottom: 0.5rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 700px) {
+  .tide-title {
+    font-size: 1.6rem;
+  }
+
+  .state-option {
+    padding: 0.5rem 0.8rem;
+  }
+
+  .tide-mark {
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tide-title {
+    font-size: 1.4rem;
+  }
+
+  .state-option {
+    font-size: 0.82rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .tide-section-label,
+  .tide-history-label,
+  .tide-pattern-type {
+    font-size: 0.68rem;
+  }
+
+  .tide-mark-state {
+    font-size: 0.72rem;
+  }
+
+  .tide-mark-date {
+    font-size: 0.62rem;
+  }
+}

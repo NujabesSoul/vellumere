@@ -53,6 +53,14 @@ const JOURNEY_STEPS = [
   },
   {
     step: 7,
+    name: 'The Cognitive Tide Chart',
+    journeyDescription: 'Select your working state. See what kinds of work suit the tide you\'re in — and what to leave for another day.',
+    origin: 'Tidal charts · lunar calendars · the Old Farmer\'s Almanac',
+    route: '/tide',
+    status: 'live',
+  },
+  {
+    step: 8,
     name: 'The Commonplace Engine',
     journeyDescription: 'Capture passages, quotes, and half-thoughts from your reading and life. The collection finds the connections you missed.',
     origin: 'John Locke · Erasmus · commonplace tradition',
