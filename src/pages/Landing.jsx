@@ -51,6 +51,14 @@ const JOURNEY_STEPS = [
     route: '/examination',
     status: 'live',
   },
+  {
+    step: 7,
+    name: 'The Commonplace Engine',
+    journeyDescription: 'Capture passages, quotes, and half-thoughts from your reading and life. The collection finds the connections you missed.',
+    origin: 'John Locke · Erasmus · commonplace tradition',
+    route: '/commonplace',
+    status: 'live',
+  },
 ]
 
 function JourneyStep({ step, name, journeyDescription, origin, route, status }) {
@@ -93,7 +101,7 @@ export default function Landing() {
         <section className="journey-section" id="tools">
           <h2 className="journey-section-title">The Journey</h2>
           <p className="journey-section-subtitle">
-            Six instruments. One path. From permission to practice.
+            Nine instruments. One path. From permission to practice.
           </p>
           <div className="journey-steps">
             {JOURNEY_STEPS.map(step => (

@@ -1,0 +1,656 @@
+/* ============================================================
+   The Commonplace Engine — Tool-specific styles
+   ============================================================
+   Browning ink, ruled pages, scribal density.
+   Like opening a scholar's notebook to a page thick with cross-references.
+   ============================================================ */
+
+/* --- Layout --- */
+.the-commonplace {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.commonplace-header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+
+.commonplace-title {
+  font-family: var(--font-header);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--ivory);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.commonplace-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--parchment);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.commonplace-main {
+  flex: 1;
+  padding: 0 1rem 2rem;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* --- Entry Input --- */
+.entry-input {
+  margin-bottom: 1.5rem;
+}
+
+.entry-text-input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 0.75rem;
+  background: var(--deepest);
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  color: var(--cream);
+  outline: none;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color 0.3s;
+  min-width: 0;
+}
+
+.entry-text-input:focus {
+  border-color: var(--honey);
+}
+
+.entry-text-input::placeholder {
+  color: var(--slate);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.entry-source-input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  padding: 0.55rem 0.75rem;
+  background: var(--deepest);
+  border: 1px solid var(--mahogany);
+  border-top: none;
+  border-radius: 0 0 2px 2px;
+  color: var(--parchment);
+  outline: none;
+  transition: border-color 0.3s;
+  min-width: 0;
+}
+
+.entry-source-input:focus {
+  border-color: var(--honey);
+}
+
+.entry-source-input::placeholder {
+  color: var(--slate);
+  font-style: italic;
+  font-size: 0.82rem;
+}
+
+.entry-submit-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.entry-submit-btn {
+  font-family: var(--font-header);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ivory);
+  background: var(--auburn);
+  border: none;
+  border-radius: 2px;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.entry-submit-btn:hover:not(:disabled) {
+  background: var(--russet);
+}
+
+.entry-submit-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.entry-submit-hint {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--slate);
+  letter-spacing: 0.04em;
+}
+
+/* --- Examples --- */
+.entry-examples {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.entry-examples-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+}
+
+.entry-example-btn {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--parchment);
+  background: none;
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.entry-example-btn:hover {
+  color: var(--honey);
+  border-color: var(--honey);
+}
+
+/* --- Loader --- */
+.commonplace-loader {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.commonplace-loader-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.loader-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--honey);
+  animation: dot-pulse 1.2s ease-in-out infinite;
+}
+
+.loader-dot:nth-child(2) { animation-delay: 0.2s; }
+.loader-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dot-pulse {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1); }
+}
+
+.commonplace-loader-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--slate);
+}
+
+/* --- Error --- */
+.commonplace-error {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.commonplace-error-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--russet);
+}
+
+/* --- Saved Message --- */
+.commonplace-saved-message {
+  text-align: center;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--honey);
+  margin-bottom: 1rem;
+  animation: fade-in 0.3s ease-out;
+}
+
+/* --- Collection --- */
+.commonplace-collection {
+  border-top: 1px solid var(--mahogany);
+  padding-top: 1.5rem;
+}
+
+.collection-header {
+  margin-bottom: 1rem;
+}
+
+.collection-count {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+}
+
+/* --- Tag Filters --- */
+.collection-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+.filter-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+  background: none;
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.filter-tag:hover {
+  color: var(--parchment);
+  border-color: var(--parchment);
+}
+
+.filter-tag.active {
+  color: var(--honey);
+  border-color: var(--honey);
+  background: rgba(201, 169, 97, 0.08);
+}
+
+/* --- Entry Card --- */
+.commonplace-entry {
+  border-bottom: 1px solid var(--mahogany);
+  padding: 0.75rem 0;
+  transition: background 0.2s;
+}
+
+.commonplace-entry:hover {
+  background: rgba(58, 47, 47, 0.2);
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+  gap: 0.75rem;
+}
+
+.entry-text-preview {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--cream);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.entry-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--slate);
+  flex-shrink: 0;
+  padding: 0 0.25rem;
+}
+
+.entry-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+  padding-left: 0;
+}
+
+.entry-tag-inline {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  color: var(--auburn);
+}
+
+.entry-tag-inline + .entry-tag-inline::before {
+  content: '·';
+  margin-right: 0.3rem;
+  color: var(--mahogany);
+}
+
+/* --- Expanded Entry --- */
+.entry-expanded {
+  padding-top: 0.75rem;
+  animation: fade-in 0.2s ease-out;
+}
+
+.entry-source {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--parchment);
+  margin-bottom: 0.75rem;
+}
+
+.entry-source-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+  margin-bottom: 0.15rem;
+}
+
+.entry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.entry-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  color: var(--auburn);
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  padding: 0.15rem 0.4rem;
+}
+
+/* --- Scholar's Note --- */
+.entry-scholarly-note {
+  margin-bottom: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(201, 169, 97, 0.04);
+  border-left: 2px solid var(--honey);
+}
+
+.entry-note-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--honey);
+  margin-bottom: 0.25rem;
+}
+
+.entry-scholarly-note p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--parchment);
+  line-height: 1.6;
+}
+
+/* --- Connections --- */
+.entry-connections {
+  margin-bottom: 0.75rem;
+}
+
+.entry-connections-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+  margin-bottom: 0.4rem;
+}
+
+.entry-connection-item {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  margin-bottom: 0.35rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.entry-connection-item:hover {
+  border-color: var(--honey);
+}
+
+.entry-connection-text {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--cream);
+  line-height: 1.5;
+}
+
+.entry-connection-source {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--slate);
+}
+
+/* --- Actions --- */
+.entry-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.essay-seed-btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--honey);
+  background: none;
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.essay-seed-btn:hover:not(:disabled) {
+  color: var(--brass);
+  border-color: var(--honey);
+  background: rgba(201, 169, 97, 0.08);
+}
+
+.essay-seed-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.entry-delete-btn {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.entry-delete-btn:hover {
+  color: var(--russet);
+  border-color: var(--mahogany);
+}
+
+/* --- Essay Seed Result --- */
+.essay-loading-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--slate);
+  padding: 0.75rem 0;
+}
+
+.essay-result {
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  background: rgba(47, 69, 56, 0.12);
+  border-left: 2px solid var(--sage);
+  animation: fade-in 0.3s ease-out;
+}
+
+.essay-result-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sage);
+  margin-bottom: 0.35rem;
+}
+
+.essay-result-title {
+  font-family: var(--font-header);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ivory);
+  margin-bottom: 0.5rem;
+}
+
+.essay-result-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--parchment);
+  line-height: 1.7;
+}
+
+.essay-copy-btn {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+  background: none;
+  border: 1px solid var(--mahogany);
+  border-radius: 2px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  margin-top: 0.6rem;
+}
+
+.essay-copy-btn:hover {
+  color: var(--honey);
+  border-color: var(--honey);
+}
+
+/* --- Essay Error --- */
+.essay-error {
+  padding: 0.5rem 0;
+}
+
+.essay-error-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--russet);
+  margin-bottom: 0.5rem;
+}
+
+/* --- Entry Date --- */
+.entry-date {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--slate);
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* --- Empty State --- */
+.commonplace-empty {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.commonplace-empty-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--parchment);
+  margin-bottom: 0.5rem;
+}
+
+.commonplace-empty-hint {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--slate);
+}
+
+.collection-empty-filter {
+  text-align: center;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--slate);
+  padding: 2rem 0;
+}
+
+/* --- Responsive --- */
+@media (max-width: 700px) {
+  .commonplace-title {
+    font-size: 1.6rem;
+  }
+
+  .entry-example-btn {
+    max-width: 160px;
+    padding: 0.4rem 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .commonplace-title {
+    font-size: 1.4rem;
+  }
+
+  .entry-example-btn {
+    max-width: 140px;
+    font-size: 0.72rem;
+    padding: 0.45rem 0.7rem;
+  }
+
+  .entry-tag-inline,
+  .entry-note-label,
+  .entry-source-label,
+  .entry-connections-label,
+  .essay-result-label,
+  .collection-count {
+    font-size: 0.68rem;
+  }
+
+  .filter-tag {
+    font-size: 0.68rem;
+    padding: 0.3rem 0.55rem;
+  }
+}

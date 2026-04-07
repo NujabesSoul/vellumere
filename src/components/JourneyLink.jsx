@@ -10,6 +10,9 @@ const JOURNEY_ORDER = [
   { name: 'The Collision Lab', route: '/combinatoria' },
   { name: 'The Decoder', route: '/decoder' },
   { name: 'The Examination', route: '/examination' },
+  { name: 'The Commonplace Engine', route: '/commonplace' },
+  { name: 'The Cognitive Tide Chart', route: '/tide' },
+  { name: 'The Marginalia Reader', route: '/marginalia' },
 ]
 
 export default function JourneyLink({ currentRoute }) {
