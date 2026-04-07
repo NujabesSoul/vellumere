@@ -67,6 +67,14 @@ const JOURNEY_STEPS = [
     route: '/commonplace',
     status: 'live',
   },
+  {
+    step: 9,
+    name: 'The Marginalia Reader',
+    journeyDescription: 'Paste someone else\'s text. A Renaissance scholar annotates the margins — cross-domain connections, assumptions, precedents, and tensions the author didn\'t notice.',
+    origin: 'Fermat\'s marginalia · monastic scribes',
+    route: '/marginalia',
+    status: 'live',
+  },
 ]
 
 function JourneyStep({ step, name, journeyDescription, origin, route, status }) {

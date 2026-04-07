@@ -8,6 +8,7 @@ import Examination from './tools/examination/Examination.jsx'
 import Apprenticeship from './tools/apprenticeship/Apprenticeship.jsx'
 import Commonplace from './tools/commonplace/Commonplace.jsx'
 import Tide from './tools/tide/Tide.jsx'
+import Marginalia from './tools/marginalia/Marginalia.jsx'
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/apprenticeship" element={<Apprenticeship />} />
         <Route path="/commonplace" element={<Commonplace />} />
         <Route path="/tide" element={<Tide />} />
+        <Route path="/marginalia" element={<Marginalia />} />
       </Routes>
     </BrowserRouter>
   )
