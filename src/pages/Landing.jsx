@@ -2,97 +2,124 @@ import { Link } from 'react-router-dom'
 import SiteNav from '../components/SiteNav.jsx'
 import SiteFooter from '../components/SiteFooter.jsx'
 
-const JOURNEY_STEPS = [
+const CHAMBERS = [
   {
-    step: 1,
-    name: 'The Permission Machine',
-    journeyDescription: 'Type what you want to do or become. Meet three people from history who did it without permission, credentials, or training.',
-    origin: 'Renaissance autodidacts',
-    route: '/permission',
-    status: 'live',
+    id: 'threshold',
+    name: 'The Threshold',
+    question: 'I can\'t begin.',
+    purpose: 'For when you can\'t begin.',
+    description: 'For when you need permission, direction, or a collision to shake something loose.',
+    instruments: [
+      {
+        name: 'The Permission Machine',
+        useWhen: 'You want to do something but feel like you need credentials, permission, or proof you\'re allowed.',
+        origin: 'Renaissance autodidacts',
+        route: '/permission',
+      },
+      {
+        name: 'The Cognitive Tide Chart',
+        useWhen: 'You don\'t know what kind of work fits the state you\'re in right now.',
+        origin: 'Tidal charts · lunar calendars · the Old Farmer\'s Almanac',
+        route: '/tide',
+      },
+      {
+        name: 'The Collision Lab',
+        useWhen: 'You\'re staring at a blank page and need two unrelated ideas to crash into each other.',
+        origin: 'Ramon Llull · 1305',
+        route: '/combinatoria',
+      },
+    ],
   },
   {
-    step: 2,
-    name: 'The Apprenticeship',
-    journeyDescription: 'Type what you want to learn. Get a phase-based roadmap from your first week to confident practitioner.',
-    origin: 'Medieval guild progression · Apprentice → Master',
-    route: '/apprenticeship',
-    status: 'live',
+    id: 'workshop',
+    name: 'The Workshop',
+    question: 'I\'m in the work.',
+    purpose: 'For when you\'re in the work.',
+    description: 'For when you\'re building, capturing, or following a thread that\'s already moving.',
+    instruments: [
+      {
+        name: 'The Apprenticeship',
+        useWhen: 'You want to learn something new and need a phase-based roadmap from week one to confidence.',
+        origin: 'Medieval guild progression · Apprentice → Master',
+        route: '/apprenticeship',
+      },
+      {
+        name: 'The Commonplace Engine',
+        useWhen: 'You just read, heard, or thought something worth keeping — and want to see what it connects to.',
+        origin: 'John Locke · Erasmus · commonplace tradition',
+        route: '/commonplace',
+      },
+      {
+        name: 'The Thread Lab',
+        useWhen: 'You\'re working on something and want techniques stolen from a completely different field.',
+        origin: 'Leonardo da Vinci · Connessione',
+        route: '/connessione',
+      },
+    ],
   },
   {
-    step: 3,
-    name: 'The Thread Lab',
-    journeyDescription: 'Type any topic you\'re learning or working on. Get techniques from completely different fields that can improve your approach.',
-    origin: 'Leonardo da Vinci · Connessione',
-    route: '/connessione',
-    status: 'live',
-  },
-  {
-    step: 4,
-    name: 'The Collision Lab',
-    journeyDescription: 'Pick two random subjects. Discover ideas, projects, and insights that only exist where they collide.',
-    origin: 'Ramon Llull · 1305',
-    route: '/combinatoria',
-    status: 'live',
-  },
-  {
-    step: 5,
-    name: 'The Decoder',
-    journeyDescription: 'Paste any complex idea. See it explained three ways — for an expert, a curious beginner, and an impatient skeptic.',
-    origin: 'Medieval translators',
-    route: '/decoder',
-    status: 'live',
-  },
-  {
-    step: 6,
-    name: 'The Examination',
-    journeyDescription: 'Five questions about your day. Sixty seconds. No scores, no streaks. Patterns emerge over time.',
-    origin: 'Monastic examination of conscience',
-    route: '/examination',
-    status: 'live',
-  },
-  {
-    step: 7,
-    name: 'The Cognitive Tide Chart',
-    journeyDescription: 'Select your working state. See what kinds of work suit the tide you\'re in — and what to leave for another day.',
-    origin: 'Tidal charts · lunar calendars · the Old Farmer\'s Almanac',
-    route: '/tide',
-    status: 'live',
-  },
-  {
-    step: 8,
-    name: 'The Commonplace Engine',
-    journeyDescription: 'Capture passages, quotes, and half-thoughts from your reading and life. The collection finds the connections you missed.',
-    origin: 'John Locke · Erasmus · commonplace tradition',
-    route: '/commonplace',
-    status: 'live',
-  },
-  {
-    step: 9,
-    name: 'The Marginalia Reader',
-    journeyDescription: 'Paste someone else\'s text. A Renaissance scholar annotates the margins — cross-domain connections, assumptions, precedents, and tensions the author didn\'t notice.',
-    origin: 'Fermat\'s marginalia · monastic scribes',
-    route: '/marginalia',
-    status: 'live',
+    id: 'scriptorium',
+    name: 'The Scriptorium',
+    question: 'I need to make sense of this.',
+    purpose: 'For when you need to make sense.',
+    description: 'For when you have material and need to digest it, translate it, or reflect on what it means.',
+    instruments: [
+      {
+        name: 'The Marginalia Reader',
+        useWhen: 'You just read something interesting and want a Renaissance scholar to annotate the margins.',
+        origin: 'Fermat\'s marginalia · monastic scribes',
+        route: '/marginalia',
+      },
+      {
+        name: 'The Decoder',
+        useWhen: 'You have a complex idea and need to explain it three ways — for an expert, a beginner, and a skeptic.',
+        origin: 'Medieval translators',
+        route: '/decoder',
+      },
+      {
+        name: 'The Examination',
+        useWhen: 'Your day is ending and you want five honest questions to find what it meant.',
+        origin: 'Monastic examination of conscience',
+        route: '/examination',
+      },
+    ],
   },
 ]
 
-function JourneyStep({ step, name, journeyDescription, origin, route, status }) {
-  const isLive = status === 'live'
-
+function DiagnosticCard({ chamber }) {
   return (
-    <div className="journey-step">
-      <span className="journey-step-number">{step}</span>
-      <div className="journey-step-content">
-        {isLive ? (
-          <Link to={route} className="journey-step-name">{name}</Link>
-        ) : (
-          <span className="journey-step-name coming-soon">{name}</span>
-        )}
-        <p className="journey-step-description">{journeyDescription}</p>
-        <span className="journey-step-origin">{origin}</span>
+    <a href={`#${chamber.id}`} className="diagnostic-card">
+      <p className="diagnostic-question">{chamber.question}</p>
+      <h3 className="diagnostic-chamber">{chamber.name}</h3>
+      <p className="diagnostic-description">{chamber.description}</p>
+    </a>
+  )
+}
+
+function InstrumentCard({ name, useWhen, origin, route }) {
+  return (
+    <Link to={route} className="instrument-card">
+      <h4 className="instrument-card-name">{name}</h4>
+      <p className="instrument-card-usewhen">
+        <span className="instrument-card-label">Use this when:</span>{' '}
+        {useWhen}
+      </p>
+      <span className="instrument-card-origin">{origin}</span>
+    </Link>
+  )
+}
+
+function ChamberSection({ chamber }) {
+  return (
+    <section className="chamber-section" id={chamber.id}>
+      <h2 className="chamber-title">{chamber.name}</h2>
+      <p className="chamber-purpose">{chamber.purpose}</p>
+      <div className="instrument-cards">
+        {chamber.instruments.map(instrument => (
+          <InstrumentCard key={instrument.name} {...instrument} />
+        ))}
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -104,27 +131,29 @@ export default function Landing() {
       <main className="landing-main">
         <section className="hero">
           <h1 className="hero-title">Vellumere</h1>
-          <p className="hero-subtitle">Renaissance thinking tools for the curious.</p>
+          <p className="hero-subtitle">
+            Instruments for thinking. For the kind of mind that has too many interests to fit one box.
+          </p>
           <p className="hero-intro">
-            Each tool borrows a technique from history and wires it to a modern AI.
-            A 13th-century combination wheel. A cross-domain pattern engine.
-            A permission slip from Leonardo da Vinci.
-            They're built to help you think differently — or at least
-            think about why you're not.
+            Most people use AI to skip the work of thinking. These instruments help you do the
+            work better. Each one is a single-purpose cognitive tool — pick it up, use it,
+            put it down. No system to adopt. No workflow to maintain. Just nine ways to
+            unstick your mind.
           </p>
         </section>
 
-        <section className="journey-section" id="tools">
-          <h2 className="journey-section-title">The Journey</h2>
-          <p className="journey-section-subtitle">
-            Nine instruments. One path. From permission to practice.
-          </p>
-          <div className="journey-steps">
-            {JOURNEY_STEPS.map(step => (
-              <JourneyStep key={step.name} {...step} />
+        <section className="diagnostic-router">
+          <h2 className="diagnostic-title">Where are you right now?</h2>
+          <div className="diagnostic-cards">
+            {CHAMBERS.map(chamber => (
+              <DiagnosticCard key={chamber.id} chamber={chamber} />
             ))}
           </div>
         </section>
+
+        {CHAMBERS.map(chamber => (
+          <ChamberSection key={chamber.id} chamber={chamber} />
+        ))}
 
         <section className="about-section" id="about">
           <h2 className="about-title">About</h2>

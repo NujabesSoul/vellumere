@@ -25,8 +25,10 @@ export default function SiteNav({ isToolPage }) {
             </button>
 
             <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
-              <li><a href="#tools">journey</a></li>
-              <li><a href="#about">about</a></li>
+              <li><a href="#threshold" onClick={() => setMenuOpen(false)}>threshold</a></li>
+              <li><a href="#workshop" onClick={() => setMenuOpen(false)}>workshop</a></li>
+              <li><a href="#scriptorium" onClick={() => setMenuOpen(false)}>scriptorium</a></li>
+              <li><a href="#about" onClick={() => setMenuOpen(false)}>about</a></li>
             </ul>
           </>
         )}

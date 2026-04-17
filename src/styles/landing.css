@@ -37,6 +37,9 @@
   color: var(--parchment);
   font-size: 1.15rem;
   margin-bottom: 2rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-intro {
@@ -49,115 +52,162 @@
   opacity: 0.85;
 }
 
-/* --- The Journey --- */
-/* Six tools. One path. The vertical line connects them
-   like chapters in a book you're writing about yourself. */
+/* --- Diagnostic Router ---
+   Three doors. The visitor picks the one that matches where they are,
+   not where they'd like to be. */
 
-.journey-section {
-  padding: 2rem 0 3rem;
+.diagnostic-router {
+  padding: 2.5rem 0 3rem;
 }
 
-.journey-section-title {
+.diagnostic-title {
   font-family: var(--font-header);
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--ivory);
-  margin-bottom: 0.5rem;
   text-align: center;
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+}
+
+.diagnostic-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.diagnostic-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem 1.4rem 1.75rem;
+  background: var(--charcoal);
+  border: 1px solid var(--mahogany);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+}
+
+.diagnostic-card:hover {
+  border-color: var(--honey);
+  background: #2c2525;
+  transform: translateY(-2px);
+}
+
+.diagnostic-question {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--parchment);
+  opacity: 0.75;
+}
+
+.diagnostic-chamber {
+  font-family: var(--font-header);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ivory);
   letter-spacing: 0.02em;
 }
 
-.journey-section-subtitle {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--parchment);
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.journey-steps {
-  position: relative;
-  padding-left: 3rem;
-}
-
-/* The vertical connecting line */
-.journey-steps::before {
-  content: '';
-  position: absolute;
-  left: 0.85rem;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  width: 2px;
-  background: var(--mahogany);
-}
-
-.journey-step {
-  display: flex;
-  gap: 1.25rem;
-  margin-bottom: 2rem;
-  position: relative;
-}
-
-.journey-step:last-child {
-  margin-bottom: 0;
-}
-
-.journey-step-number {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--slate);
-  background: var(--deepest);
-  border-radius: 50%;
-  border: 1px solid var(--mahogany);
-  position: absolute;
-  left: -3rem;
-  top: 0.15rem;
-  flex-shrink: 0;
-}
-
-.journey-step-content {
-  flex: 1;
-}
-
-a.journey-step-name {
-  font-family: var(--font-header);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--ivory);
-  display: block;
-  margin-bottom: 0.3rem;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-a.journey-step-name:hover {
+.diagnostic-card:hover .diagnostic-chamber {
   color: var(--honey);
 }
 
-.journey-step-name.coming-soon {
-  font-family: var(--font-header);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--slate);
-  display: block;
-  margin-bottom: 0.3rem;
+.diagnostic-description {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--parchment);
+  line-height: 1.55;
+  opacity: 0.9;
 }
 
-.journey-step-description {
+/* --- Chamber Sections ---
+   Each chamber is a room. The section heading is the door sign.
+   Instruments inside sit like tools on a workbench. */
+
+.chamber-section {
+  padding: 2.5rem 0 3rem;
+  border-top: 1px solid var(--mahogany);
+  /* Offset anchor scroll past the fixed nav */
+  scroll-margin-top: 5rem;
+}
+
+.chamber-title {
+  font-family: var(--font-header);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--ivory);
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.35rem;
+}
+
+.chamber-purpose {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--parchment);
+  text-align: center;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.instrument-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.instrument-card {
+  display: block;
+  padding: 1.25rem 1.4rem 1.4rem;
+  background: var(--charcoal);
+  border: 1px solid var(--mahogany);
+  border-left: 3px solid var(--mahogany);
+  border-radius: 3px;
+  text-decoration: none;
+  transition: border-left-color 0.3s, background 0.3s;
+}
+
+.instrument-card:hover {
+  border-left-color: var(--honey);
+  background: #2c2525;
+}
+
+.instrument-card-name {
+  font-family: var(--font-header);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+
+.instrument-card:hover .instrument-card-name {
+  color: var(--honey);
+}
+
+.instrument-card-usewhen {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
   color: var(--parchment);
   line-height: 1.6;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
 }
 
-.journey-step-origin {
+.instrument-card-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+  font-style: normal;
+}
+
+.instrument-card-origin {
+  display: block;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--auburn);
@@ -215,16 +265,13 @@ a.journey-step-name:hover {
     padding: 0 1.25rem;
   }
 
-  .journey-steps {
-    padding-left: 2.5rem;
+  .diagnostic-cards {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
   }
 
-  .journey-step-number {
-    left: -2.5rem;
-  }
-
-  .journey-steps::before {
-    left: 0.6rem;
+  .chamber-title {
+    font-size: 1.5rem;
   }
 }
 
@@ -241,27 +288,23 @@ a.journey-step-name:hover {
     padding: 2.5rem 0 2rem;
   }
 
-  .journey-steps {
-    padding-left: 2rem;
+  .diagnostic-card {
+    padding: 1.25rem 1.15rem 1.4rem;
   }
 
-  .journey-step-number {
-    left: -2rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 0.68rem;
+  .instrument-card {
+    padding: 1.1rem 1.15rem 1.25rem;
   }
 
-  .journey-steps::before {
-    left: 0.45rem;
+  .instrument-card-name {
+    font-size: 1.1rem;
   }
 
-  .journey-step-origin {
+  .instrument-card-origin {
     font-size: 0.72rem;
   }
 
-  /* Journey step links need 44px touch target */
-  a.journey-step-name {
-    padding: 0.25rem 0;
+  .instrument-card-label {
+    font-size: 0.68rem;
   }
 }
