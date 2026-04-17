@@ -45,7 +45,7 @@ const CHAMBERS = [
       },
       {
         name: 'The Commonplace Engine',
-        useWhen: 'You just read, heard, or thought something worth keeping — and want to see what it connects to.',
+        useWhen: 'You just read, heard, or thought something worth keeping, and want to see what it connects to.',
         origin: 'John Locke · Erasmus · commonplace tradition',
         route: '/commonplace',
       },
@@ -72,7 +72,7 @@ const CHAMBERS = [
       },
       {
         name: 'The Decoder',
-        useWhen: 'You have a complex idea and need to explain it three ways — for an expert, a beginner, and a skeptic.',
+        useWhen: 'You have a complex idea and need to explain it three ways: for an expert, a beginner, and a skeptic.',
         origin: 'Medieval translators',
         route: '/decoder',
       },
@@ -136,7 +136,7 @@ export default function Landing() {
           </p>
           <p className="hero-intro">
             Most people use AI to skip the work of thinking. These instruments help you do the
-            work better. Each one is a single-purpose cognitive tool — pick it up, use it,
+            work better. Each one is a single-purpose cognitive tool. Pick it up, use it,
             put it down. No system to adopt. No workflow to maintain. Just nine ways to
             unstick your mind.
           </p>
@@ -160,7 +160,7 @@ export default function Landing() {
           <p className="about-text">
             These tools exist because the best ideas come from connecting things that
             aren't supposed to be connected. Each one borrows a technique from history
-            — medieval guilds, Renaissance workshops, monastic reflection — and makes
+            (medieval guilds, Renaissance workshops, monastic reflection) and makes
             it useful today.
           </p>
           <p className="about-text">
